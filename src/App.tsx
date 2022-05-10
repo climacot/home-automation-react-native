@@ -1,15 +1,16 @@
-import { SafeAreaView, ScrollView, Text, View } from 'react-native'
+import { NativeRouter, Route, Routes } from 'react-router-native'
+import IndexPage from './pages/Index'
 import React from 'react'
+import LoginPage from './pages/Login'
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <View>
-          <Text>Hello world!</Text>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <NativeRouter>
+      <Routes>
+        <Route index element={<IndexPage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
+    </NativeRouter>
   )
 }
 
