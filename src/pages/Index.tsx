@@ -9,7 +9,7 @@ export default function IndexPage() {
   const srcWallpaper: ImageURISource = require('../../src/public/wallpaper.png')
   const user = auth.user
 
-  if (user) {
+  if (user === undefined) {
     return (
       <View>
         <Text>Cargando...</Text>

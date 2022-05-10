@@ -26,12 +26,11 @@ export default function LoginPage() {
     auth.signIn(
       email,
       password,
-      () =>
-        auth.user?.rol === 'administrador'
-          ? navigate('/admin', { replace: true })
-          : navigate('/user', { replace: true }),
+      () => {},
       () => setError('Hay un error en el usuario o contraseña'),
     )
+
+    auth.user?.rol === 'administrador' ? navigate('/admin', { replace: true }) : navigate('/user', { replace: true })
   }
 
   return (

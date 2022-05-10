@@ -33,7 +33,7 @@ export default function AdminPage() {
         <View style={styles.containerButtons}>
           <ButtonLink title="Registrar" path="/create" />
           <View style={styles.separator} />
-          <ButtonLink title="Consultar" path="/read" />
+          <ButtonLink title="Consultar" path="/search" />
           <View style={styles.separator} />
           <ButtonLink title="Modificar" path="/" />
           <View style={styles.separator} />
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF3F3F',
   },
   title: {
-    fontSize: 25,
+    fontSize: 30,
     marginBottom: 10,
     color: '#000',
   },
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   },
   font: {
     color: '#000',
-    fontSize: 15,
+    fontSize: 17,
   },
   divider: {
     padding: 10,
