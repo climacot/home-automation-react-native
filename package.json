@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "react": "17.0.2",
-    "react-native": "0.68.1"
+    "react-native": "0.68.1",
+    "standard": "^17.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -20,10 +21,15 @@
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.67.3",
     "@types/react-test-renderer": "^17.0.1",
-    "@typescript-eslint/eslint-plugin": "^5.17.0",
-    "@typescript-eslint/parser": "^5.17.0",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
     "babel-jest": "^26.6.3",
-    "eslint": "^7.32.0",
+    "eslint": "^8.0.1",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.67.0",
     "react-test-renderer": "17.0.2",
