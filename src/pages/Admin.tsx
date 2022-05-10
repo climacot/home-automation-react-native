@@ -1,8 +1,9 @@
 import { BackHandlerExit } from '../androidComponents/BackHandlerExit'
-import { Button, Image, ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Image, ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native'
 import AuthStatus from '../context/AuthStatus'
 import React from 'react'
 import useAuth from '../hooks/useAuth'
+import ButtonLink from '../components/ButtonLink'
 
 export default function AdminPage() {
   const auth = useAuth()
@@ -18,21 +19,43 @@ export default function AdminPage() {
           <Text style={styles.title}>Panel de administración</Text>
           <Image style={styles.logo} source={{ uri: user?.photoURL }} />
         </View>
-        <Text style={styles.font}>Nombre: {user?.displayName}</Text>
-        <Text style={styles.font}>Identificación: {user?.id}</Text>
-        <Text style={styles.font}>Cargo: {user?.rol}</Text>
-        <Text style={styles.font}>Correo: {user?.email}</Text>
+        <View style={styles.containerInfo}>
+          <Text style={styles.font}>Nombre: {user?.displayName}</Text>
+          <Text style={styles.font}>Identificación: {user?.id}</Text>
+          <Text style={styles.font}>Cargo: {user?.rol}</Text>
+          <Text style={styles.font}>Correo: {user?.email}</Text>
+        </View>
 
         <View style={styles.divider}>
           <Text style={styles.dividerText}>Opciones de usuario</Text>
         </View>
 
         <View style={styles.containerButtons}>
+          <ButtonLink title="Registrar" path="/create" />
           <View style={styles.separator} />
+          <ButtonLink title="Consultar" path="/read" />
           <View style={styles.separator} />
-          <Button title="Modificar" />
+          <ButtonLink title="Modificar" path="/" />
           <View style={styles.separator} />
-          <Button title="Eliminar" />
+          <ButtonLink title="Eliminar" path="/" />
+          <View style={styles.separator} />
+        </View>
+
+        <View style={styles.divider}>
+          <Text style={styles.dividerText}>Estado de los componentes</Text>
+        </View>
+
+        <View style={styles.containerInfo}>
+          <Text style={styles.font}>
+            Estado de los sensores: <Text style={styles.active}>Activo</Text>
+          </Text>
+          <Text style={styles.font}>
+            Estado de las luces: <Text style={styles.disable}>Desactivado</Text>
+          </Text>
+          <Text style={styles.font}>
+            Estado de la calefacción: <Text style={styles.active}>Activo</Text>
+          </Text>
+          <Text style={styles.font}>Temperatura: 18° C</Text>
         </View>
 
         <View style={styles.divider}>
@@ -40,9 +63,10 @@ export default function AdminPage() {
         </View>
 
         <View style={styles.containerButtons}>
-          <Button title="Distancia de sensores de luz" />
+          <ButtonLink title="Distancia de sensores de luz" path="/" />
           <View style={styles.separator} />
-          <Button title="Distancia detección de alarma" />
+          <ButtonLink title="Distancia detección de alarma" path="/" />
+          <View style={styles.separator} />
         </View>
       </ImageBackground>
     </ScrollView>
@@ -55,6 +79,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 30,
+  },
+  containerInfo: {
+    paddingHorizontal: 10,
+  },
+  containerButtons: {
+    display: 'flex',
+    flexDirection: 'column',
+    paddingHorizontal: 50,
+  },
+  active: {
+    backgroundColor: '#00C82A',
+  },
+  disable: {
+    backgroundColor: '#FF3F3F',
   },
   title: {
     fontSize: 25,
@@ -78,10 +116,6 @@ const styles = StyleSheet.create({
   },
   dividerText: {
     textAlign: 'center',
-  },
-  containerButtons: {
-    display: 'flex',
-    flexDirection: 'column',
   },
   separator: {
     marginBottom: 5,
