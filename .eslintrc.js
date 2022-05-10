@@ -23,7 +23,8 @@ module.exports = {
   rules: {
     'no-use-before-define': 'off',
     'comma-dangle': 'off',
-    'space-before-function-paren': 'off'
+    'space-before-function-paren': 'off',
+    'react/prop-types': 'off'
   },
   overrides: [
     {
