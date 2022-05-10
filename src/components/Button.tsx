@@ -6,15 +6,10 @@ import {
 } from 'react-native'
 import React from 'react'
 
-type ComponentProps = {
-  title: string
-  restProps: TouchableHighlightProps
-}
-
-export default function Button({ title, restProps }: ComponentProps) {
+export default function Button(restProps: TouchableHighlightProps) {
   return (
-    <TouchableHighlight onPress={restProps.onPress} style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
+    <TouchableHighlight {...restProps} style={styles.container}>
+      <Text style={styles.title}>Entrar</Text>
     </TouchableHighlight>
   )
 }
