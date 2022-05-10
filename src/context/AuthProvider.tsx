@@ -1,8 +1,8 @@
-import { Alert } from 'react-native'
 import { AuthContext } from './AuthContext'
-import { userInfoDecorator } from '../decorators/userInfoDecorator'
+import { IUserInfo } from '../Models/user'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth'
+import auth from '@react-native-firebase/auth'
+import database from '@react-native-firebase/database'
 import React, { ReactNode, useEffect, useState } from 'react'
 
 type ComponentProps = {
@@ -10,25 +10,39 @@ type ComponentProps = {
 }
 
 export default function AuthProvider({ children }: ComponentProps) {
-  const [user, setUser] = useState<FirebaseAuthTypes.UserInfo | null>(null)
+  const [user, setUser] = useState<IUserInfo | null>(null)
 
   useEffect(() => {
-    getData().then((userPromise: FirebaseAuthTypes.UserInfo | null) => {
+    getData().then((userPromise: IUserInfo | null) => {
       if (!userPromise) setUser(null)
       setUser(userPromise)
     })
   }, [])
 
-  const signIn = (email: string, password: string, callback: Function) => {
-    return auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(userPromise => {
-        const userInfo = userInfoDecorator(userPromise.user)
-        setUser(userInfo)
-        storeData(userInfo)
-        callback()
-      })
-      .catch(() => Alert.alert('No existe ni el usuario ni la contraseña 😒😒'))
+  const signIn = async (emailp: string, passwordp: string, callback: Function, callbackError: Function) => {
+    try {
+      const credential = await auth().signInWithEmailAndPassword(emailp, passwordp)
+      const userCredential = credential
+      const { uid, email } = userCredential.user
+      const db = await database().ref(`usuarios/${uid}`).once('value')
+      const { nombre, identificacion, foto, cargo, telefono } = db.val()
+
+      const userInfo = {
+        displayName: nombre,
+        email,
+        id: identificacion,
+        phoneNumber: telefono,
+        photoURL: foto,
+        rol: cargo,
+        uid,
+      }
+
+      setUser(userInfo)
+      storeData(userInfo)
+      callback()
+    } catch (error) {
+      callbackError()
+    }
   }
 
   const signOut = (callback: Function) => {
@@ -46,7 +60,7 @@ export default function AuthProvider({ children }: ComponentProps) {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
 
-const storeData = async (value: FirebaseAuthTypes.UserInfo | null) => {
+const storeData = async (value: IUserInfo | null) => {
   try {
     const jsonValue = JSON.stringify(value)
     await AsyncStorage.setItem('@statususer', jsonValue)
