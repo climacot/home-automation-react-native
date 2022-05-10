@@ -21,7 +21,10 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
-    'no-use-before-define': 'off'
+    'no-use-before-define': 'off',
+    'comma-dangle': 'off',
+    'space-before-function-paren': 'off',
+    'react/prop-types': 'off'
   },
   overrides: [
     {
