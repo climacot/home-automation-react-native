@@ -1,13 +1,4 @@
-import {
-  Image,
-  ImageURISource,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native'
+import { Image, ImageURISource, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import Button from '../components/Button'
 import { useNavigate } from 'react-router-native'
@@ -17,6 +8,7 @@ import { BackHandlerPage } from '../androidComponents/BackHandlerPage'
 export default function LoginPage() {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const [error, setError] = useState<string>('')
   const auth = useAuth()
   const navigate = useNavigate()
 
@@ -26,15 +18,24 @@ export default function LoginPage() {
   const srcLogo: ImageURISource = require('../../src/public/logo.png')
 
   const handleSubmit = () => {
-    if (email.length > 0 && password.length > 0) {
-      auth.signIn(email, password, () => navigate('/', { replace: true }))
+    if (email.length === 0 || password.length === 0) {
+      setError('Hay campos vacios, verifique por favor')
+      return
     }
+
+    auth.signIn(
+      email,
+      password,
+      () =>
+        auth.user?.rol === 'administrador'
+          ? navigate('/admin', { replace: true })
+          : navigate('/user', { replace: true }),
+      () => setError('Hay un error en el usuario o contraseña'),
+    )
   }
 
   return (
-    <ScrollView
-      contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
-      showsVerticalScrollIndicator={false}>
+    <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }} showsVerticalScrollIndicator={false}>
       <SafeAreaView style={styles.container}>
         <View style={styles.container}>
           <Text style={styles.title}>Inicio de sesión</Text>
@@ -58,8 +59,11 @@ export default function LoginPage() {
               textContentType="password"
               value={password}
             />
+            <View>
+              <Text style={styles.error}>{error}</Text>
+            </View>
             <View style={styles.containerButton}>
-              <Button restProps={handleSubmit} title="Entrar" />
+              <Button onPress={handleSubmit} />
             </View>
           </View>
         </View>
@@ -102,5 +106,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: '#093D9E',
     fontSize: 17,
+  },
+  error: {
+    color: '#FF0000',
   },
 })
