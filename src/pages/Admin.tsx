@@ -1,9 +1,9 @@
 import { BackHandlerExit } from '../androidComponents/BackHandlerExit'
 import { Image, ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native'
 import AuthStatus from '../context/AuthStatus'
+import ButtonLink from '../components/ButtonLink'
 import React from 'react'
 import useAuth from '../hooks/useAuth'
-import ButtonLink from '../components/ButtonLink'
 
 export default function AdminPage() {
   const auth = useAuth()
@@ -12,8 +12,8 @@ export default function AdminPage() {
   BackHandlerExit()
 
   return (
-    <ScrollView>
-      <ImageBackground source={require('../public/wallpaper.png')}>
+    <ImageBackground source={require('../public/wallpaper.png')}>
+      <ScrollView>
         <AuthStatus />
         <View style={styles.container}>
           <Text style={styles.title}>Panel de administración</Text>
@@ -68,8 +68,8 @@ export default function AdminPage() {
           <ButtonLink title="Distancia detección de alarma" path="/" />
           <View style={styles.separator} />
         </View>
-      </ImageBackground>
-    </ScrollView>
+      </ScrollView>
+    </ImageBackground>
   )
 }
 

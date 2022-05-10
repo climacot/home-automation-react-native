@@ -1,22 +1,80 @@
-import { ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
 import { BackHandlerPage } from '../androidComponents/BackHandlerPage'
+import { FlatList, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
+import Button from '../components/Button'
+import database from '@react-native-firebase/database'
+import React, { useEffect, useState } from 'react'
 
 export default function SearchUser() {
+  const [name, setName] = useState<string>('')
+  const [users, setUsers] = useState<any>([])
+  const [user, setUser] = useState<any>([])
+
   BackHandlerPage()
 
+  useEffect(() => {
+    const reference = database().ref('usuarios')
+
+    reference.once('value').then(snapshot => {
+      const arr = []
+
+      for (const [, value] of Object.entries(snapshot.val())) {
+        arr.push(value)
+      }
+
+      console.log(arr)
+
+      const arrr = arr.filter((u: any) => u.cargo === 'usuario')
+      setUsers(arrr)
+    })
+  }, [])
+
+  const handleSubmit = () => {
+    const findUser = users.filter((u: any) => u.nombre.toLowerCase().includes(name.toLowerCase()))
+    setUser(findUser)
+  }
+
   return (
-    <View>
-      <ImageBackground source={require('../public/wallpaper.png')}>
-        <ScrollView
-          contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
-          showsVerticalScrollIndicator={false}>
-          <View style={styles.container}>
-            <Text style={styles.title}>Registrar un usuario</Text>
-          </View>
-        </ScrollView>
-      </ImageBackground>
-    </View>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Buscar usuario</Text>
+      </View>
+      <View style={styles.containerInputs}>
+        <TextInput value={name} onChangeText={setName} style={styles.input} placeholder="Nombre del usuario a buscar" />
+        <View style={styles.containerButton}>
+          <Button onPress={handleSubmit} />
+        </View>
+      </View>
+      <View style={styles.divider}>
+        <Text style={styles.dividerText}>Usuarios filtrados</Text>
+      </View>
+      <View style={styles.containerInputs}>
+        {user.length > 0 && (
+          <FlatList
+            data={user}
+            renderItem={({ item, index }) => (
+              <View key={index} style={styles.item}>
+                <Text style={styles.font}>Correo: {item.correo}</Text>
+                <Text style={styles.font}>Nombre: {item.nombre}</Text>
+              </View>
+            )}
+          />
+        )}
+      </View>
+      <View style={styles.divider}>
+        <Text style={styles.dividerText}>Usuarios registrados</Text>
+      </View>
+      <View style={styles.containerInputs}>
+        <FlatList
+          data={users}
+          renderItem={({ item, index }) => (
+            <View key={index} style={styles.item}>
+              <Text style={styles.font}>Correo: {item.correo}</Text>
+              <Text style={styles.font}>Nombre: {item.nombre}</Text>
+            </View>
+          )}
+        />
+      </View>
+    </ScrollView>
   )
 }
 
@@ -26,6 +84,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 30,
+  },
+  item: {
+    padding: 5,
+    marginBottom: 5,
+    backgroundColor: '#34495e',
   },
   error: {
     color: '#FF0000',
@@ -42,7 +105,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 50,
   },
   containerInputs: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
   },
   active: {
     backgroundColor: '#00C82A',
@@ -65,7 +128,7 @@ const styles = StyleSheet.create({
     borderRadius: 9999,
   },
   font: {
-    color: '#000',
+    color: '#fff',
     fontSize: 17,
   },
   divider: {

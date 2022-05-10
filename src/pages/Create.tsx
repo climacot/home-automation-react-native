@@ -51,73 +51,67 @@ export default function CreateUser() {
   }
 
   return (
-    <View>
-      <ImageBackground source={require('../public/wallpaper.png')}>
-        <ScrollView
-          contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
-          showsVerticalScrollIndicator={false}>
-          <View style={styles.container}>
-            <Text style={styles.title}>Registrar un usuario</Text>
-            <Image style={styles.logo} source={{ uri: user?.photoURL }} />
-          </View>
-          <View style={styles.containerInputs}>
-            <Text style={styles.textInputDetail}>Nombre de la persona *</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={setDisplayName}
-              value={displayName}
-              placeholder="Ingresa el nombre"
-              autoComplete="name"
-              textContentType="name"
-            />
-            <Text style={styles.textInputDetail}>Identificación *</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={setId}
-              value={id.replace(/[^0-9]/g, '')}
-              placeholder="Ingresa la identificación"
-              keyboardType="numeric"
-            />
-            <Text style={styles.textInputDetail}>Numero de teléfono *</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={setPhoneNumber}
-              value={phoneNumber.replace(/[^0-9]/g, '')}
-              placeholder="Ingresa el teléfono"
-              textContentType="telephoneNumber"
-              keyboardType="numeric"
-            />
-          </View>
-          <View style={styles.divider}>
-            <Text style={styles.dividerText}>Con estos datos se iniciará sesión</Text>
-          </View>
-          <View style={styles.containerInputs}>
-            <Text style={styles.textInputDetail}>Correo eléctronico *</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={setEmail}
-              value={email}
-              placeholder="Ingresa el correo eléctronico"
-              autoComplete="email"
-              textContentType="emailAddress"
-            />
-            <Text style={styles.textInputDetail}>Contraseña *</Text>
-            <TextInput
-              style={styles.input}
-              onChangeText={setPassword}
-              value={password}
-              placeholder="Ingresa la contraseña"
-              textContentType="password"
-              secureTextEntry
-            />
-            {error.length > 0 && <Text style={styles.error}>{error}</Text>}
-            <View style={styles.containerButton}>
-              <Button onPress={handleSubmit} />
-            </View>
-          </View>
-        </ScrollView>
-      </ImageBackground>
-    </View>
+    <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }} showsVerticalScrollIndicator={false}>
+      <View style={styles.container}>
+        <Text style={styles.title}>Registrar un usuario</Text>
+        <Image style={styles.logo} source={{ uri: user?.photoURL }} />
+      </View>
+      <View style={styles.containerInputs}>
+        <Text style={styles.textInputDetail}>Nombre de la persona *</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={setDisplayName}
+          value={displayName}
+          placeholder="Ingresa el nombre"
+          autoComplete="name"
+          textContentType="name"
+        />
+        <Text style={styles.textInputDetail}>Identificación *</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={setId}
+          value={id.replace(/[^0-9]/g, '')}
+          placeholder="Ingresa la identificación"
+          keyboardType="numeric"
+        />
+        <Text style={styles.textInputDetail}>Numero de teléfono *</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={setPhoneNumber}
+          value={phoneNumber.replace(/[^0-9]/g, '')}
+          placeholder="Ingresa el teléfono"
+          textContentType="telephoneNumber"
+          keyboardType="numeric"
+        />
+      </View>
+      <View style={styles.divider}>
+        <Text style={styles.dividerText}>Con estos datos se iniciará sesión</Text>
+      </View>
+      <View style={styles.containerInputs}>
+        <Text style={styles.textInputDetail}>Correo eléctronico *</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={setEmail}
+          value={email}
+          placeholder="Ingresa el correo eléctronico"
+          autoComplete="email"
+          textContentType="emailAddress"
+        />
+        <Text style={styles.textInputDetail}>Contraseña *</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={setPassword}
+          value={password}
+          placeholder="Ingresa la contraseña"
+          textContentType="password"
+          secureTextEntry
+        />
+        {error.length > 0 && <Text style={styles.error}>{error}</Text>}
+        <View style={styles.containerButton}>
+          <Button onPress={handleSubmit} />
+        </View>
+      </View>
+    </ScrollView>
   )
 }
 
