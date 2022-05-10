@@ -9,10 +9,13 @@ type ComponentProps = {
 export default function Auth({ children }: ComponentProps) {
   const auth = useAuth()
   const location = useLocation()
+  const user = auth.user
 
-  if (auth.user) {
-    return <Navigate to="/admin" state={{ from: location }} replace />
-  }
+  if (!user) return children
 
+  const { rol } = user
+
+  if (rol === 'administrador') return <Navigate to="/admin" state={{ from: location }} replace />
+  if (rol === 'usuario') return <Navigate to="/user" state={{ from: location }} replace />
   return children
 }
