@@ -1,18 +1,21 @@
-import {
-  SafeAreaView,
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  ImageBackground,
-  ImageURISource,
-} from 'react-native'
+import { SafeAreaView, Text, View, StyleSheet, Image, ImageBackground, ImageURISource } from 'react-native'
 import ButtonLink from '../components/ButtonLink'
 import React from 'react'
+import useAuth from '../hooks/useAuth'
 
 export default function IndexPage() {
+  const auth = useAuth()
   const srcLogo: ImageURISource = require('../../src/public/logo.png')
   const srcWallpaper: ImageURISource = require('../../src/public/wallpaper.png')
+  const user = auth.user
+
+  if (user) {
+    return (
+      <View>
+        <Text>Cargando...</Text>
+      </View>
+    )
+  }
 
   return (
     <ImageBackground source={srcWallpaper} style={styles.container}>
@@ -21,8 +24,7 @@ export default function IndexPage() {
           <Text style={styles.title}>Casa Domótica</Text>
           <Image style={styles.logo} source={srcLogo} />
           <Text style={styles.text}>
-            Proyecto de domótica para controlar una vivienda utilizando Arduino,
-            Firebase y React Native!
+            Proyecto de domótica para controlar una vivienda utilizando Arduino, Firebase y React Native!
           </Text>
           <View style={styles.containerButton}>
             <ButtonLink path="/login" title="Iniciar Sesión" />
