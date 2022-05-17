@@ -1,15 +1,12 @@
-import {
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  TouchableHighlightProps,
-} from 'react-native'
+import { StyleSheet, Text, TouchableHighlight } from 'react-native'
 import React from 'react'
 
-export default function Button(restProps: TouchableHighlightProps) {
+export default function Button(props: any) {
+  const { onPress, children, color } = props
+
   return (
-    <TouchableHighlight {...restProps} style={styles.container}>
-      <Text style={styles.title}>Entrar</Text>
+    <TouchableHighlight onPress={onPress} style={styles.container}>
+      {children}
     </TouchableHighlight>
   )
 }
