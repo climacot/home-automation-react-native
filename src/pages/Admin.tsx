@@ -34,11 +34,6 @@ export default function AdminPage() {
           <ButtonLink title="Registrar" path="/create" />
           <View style={styles.separator} />
           <ButtonLink title="Consultar" path="/search" />
-          <View style={styles.separator} />
-          <ButtonLink title="Modificar" path="/update" />
-          <View style={styles.separator} />
-          <ButtonLink title="Eliminar" path="/" />
-          <View style={styles.separator} />
         </View>
 
         <View style={styles.divider}>
