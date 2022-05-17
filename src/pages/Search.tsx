@@ -27,6 +27,10 @@ export default function SearchUser() {
   BackHandlerPage()
 
   useEffect(() => {
+    if (!name) setUser([])
+  }, [name])
+
+  useEffect(() => {
     const reference = database().ref('usuarios')
 
     reference.once('value').then(snapshot => {
@@ -80,16 +84,12 @@ export default function SearchUser() {
           <Text style={styles.dividerText}>Usuarios filtrados</Text>
         </View>
         <View style={styles.containerInputs}>
-          {user.length > 0 && (
-            <FlatList
-              data={user}
-              renderItem={({ item, index }) => (
-                <View key={index} style={styles.item}>
-                  <Text style={styles.font}>Correo: {item.correo}</Text>
-                  <Text style={styles.font}>Nombre: {item.nombre}</Text>
-                </View>
-              )}
-            />
+          {user.length > 0 ? (
+            <FlatList data={user} renderItem={({ item, index }) => <Item item={item} index={index} />} />
+          ) : (
+            <View style={styles.item}>
+              <Text style={styles.font}>No has buscado un usuario aún</Text>
+            </View>
           )}
         </View>
         <View style={styles.divider}>
@@ -104,7 +104,7 @@ export default function SearchUser() {
 }
 
 const Item = ({ index, item }: { index: number; item: any }) => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
   const [openEdit, setOpenEdit] = useState(false)
   const srcLogo: ImageURISource = require('../../src/public/garbage.png')
   const srcLogo2: ImageURISource = require('../../src/public/edit.png')
@@ -112,6 +112,9 @@ const Item = ({ index, item }: { index: number; item: any }) => {
   const [displayName, setDisplayName] = useState<string>(item.nombre)
   const reference = database().ref(`/usuarios/${item.uid}`)
   const navigate = useNavigate()
+  const [id, setId] = useState<string>(item.identificacion)
+  const [phoneNumber, setPhoneNumber] = useState<string>(item.telefono)
+  const [adress, setAdress] = useState<string>(item.direccion)
 
   const handleDelete = () => {
     Alert.alert('', 'Está seguro que desea eliminar el usuario?, serás redirigido al inicio', [
@@ -130,8 +133,28 @@ const Item = ({ index, item }: { index: number; item: any }) => {
     ])
   }
 
+  const handleUpdate = () => {
+    Alert.alert('', 'Estas seguro de modificar al usuario?, serás redirigido al inicio', [
+      {
+        text: 'Aceptar',
+        onPress: () => {
+          reference
+            .update({
+              nombre: displayName,
+            })
+            .then(() => navigate('/'))
+        },
+      },
+      {
+        text: 'Cancelar',
+        onPress: () => null,
+        style: 'cancel',
+      },
+    ])
+  }
+
   const handleClicl = () => {
-    setOpen(!open)
+    //setOpen(!open)
     if (openEdit) setOpenEdit(!open)
   }
 
@@ -167,7 +190,32 @@ const Item = ({ index, item }: { index: number; item: any }) => {
                 autoComplete="name"
                 textContentType="name"
               />
-              <Button>
+              <Text style={styles.textInputDetail}>Identificación *</Text>
+              <TextInput
+                style={styles.input}
+                onChangeText={setId}
+                value={id.replace(/[^0-9]/g, '')}
+                placeholder="Ingresa una identificación"
+                keyboardType="numeric"
+              />
+              <Text style={styles.textInputDetail}>Numero de teléfono *</Text>
+              <TextInput
+                style={styles.input}
+                onChangeText={setPhoneNumber}
+                value={phoneNumber.replace(/[^0-9]/g, '')}
+                placeholder="Ingresa el teléfono"
+                textContentType="telephoneNumber"
+                keyboardType="numeric"
+              />
+              <Text style={styles.textInputDetail}>Dirección *</Text>
+              <TextInput
+                style={styles.input}
+                onChangeText={setAdress}
+                value={adress}
+                placeholder="Ingresa una dirección"
+                textContentType="addressCity"
+              />
+              <Button onPress={handleUpdate}>
                 <Text style={styles.titleButton}>Actualizar campos</Text>
               </Button>
             </View>
@@ -183,7 +231,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   containerText: {
-    width: 250,
+    width: 260,
     overflow: 'hidden',
   },
   container: {
