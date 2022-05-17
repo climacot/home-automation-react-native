@@ -1,4 +1,14 @@
-import { Image, ImageBackground, ImageURISource, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
+import {
+  Image,
+  ImageBackground,
+  ImageURISource,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native'
 import React, { useState } from 'react'
 import Button from '../components/Button'
 import { useNavigate } from 'react-router-native'
@@ -34,7 +44,7 @@ export default function LoginPage() {
   }
 
   return (
-    <ImageBackground style={{height: '100%'}} source={require('../public/wallpaper.png')}>
+    <ImageBackground style={{ height: '100%' }} source={require('../public/wallpaper.png')}>
       <ScrollView
         contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
         showsVerticalScrollIndicator={false}>
@@ -65,7 +75,9 @@ export default function LoginPage() {
                 <Text style={styles.error}>{error}</Text>
               </View>
               <View style={styles.containerButton}>
-                <Button title='Iniciar Sesión' onPress={handleSubmit} />
+                <Button title="Iniciar Sesión" onPress={handleSubmit}>
+                  <Text style={styles.titleButton}>Iniciar Sesión</Text>
+                </Button>
               </View>
             </View>
           </View>
@@ -76,6 +88,11 @@ export default function LoginPage() {
 }
 
 const styles = StyleSheet.create({
+  titleButton: {
+    color: '#fff',
+    fontSize: 17,
+    textAlign: 'center',
+  },
   container: {
     display: 'flex',
     alignItems: 'center',
