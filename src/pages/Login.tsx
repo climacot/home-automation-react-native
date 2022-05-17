@@ -1,4 +1,4 @@
-import { Image, ImageURISource, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Image, ImageBackground, ImageURISource, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import Button from '../components/Button'
 import { useNavigate } from 'react-router-native'
@@ -34,40 +34,44 @@ export default function LoginPage() {
   }
 
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }} showsVerticalScrollIndicator={false}>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.container}>
-          <Text style={styles.title}>Inicio de sesión</Text>
-          <Image style={styles.logo} source={srcLogo} />
-          <View style={styles.containerInputs}>
-            <Text style={styles.textInputDetail}>Usuario</Text>
-            <TextInput
-              autoComplete="email"
-              onChangeText={setEmail}
-              placeholder="Ingrese un correo eléctronico"
-              style={styles.input}
-              textContentType="emailAddress"
-              value={email}
-            />
-            <Text style={styles.textInputDetail}>Contraseña</Text>
-            <TextInput
-              onChangeText={setPassword}
-              placeholder="Ingrese una contraseña"
-              secureTextEntry
-              style={styles.input}
-              textContentType="password"
-              value={password}
-            />
-            <View>
-              <Text style={styles.error}>{error}</Text>
-            </View>
-            <View style={styles.containerButton}>
-              <Button onPress={handleSubmit} />
+    <ImageBackground style={{height: '100%'}} source={require('../public/wallpaper.png')}>
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
+        showsVerticalScrollIndicator={false}>
+        <SafeAreaView style={styles.container}>
+          <View style={styles.container}>
+            <Text style={styles.title}>Inicio de sesión</Text>
+            <Image style={styles.logo} source={srcLogo} />
+            <View style={styles.containerInputs}>
+              <Text style={styles.textInputDetail}>Usuario</Text>
+              <TextInput
+                autoComplete="email"
+                onChangeText={setEmail}
+                placeholder="Ingrese un correo eléctronico"
+                style={styles.input}
+                textContentType="emailAddress"
+                value={email}
+              />
+              <Text style={styles.textInputDetail}>Contraseña</Text>
+              <TextInput
+                onChangeText={setPassword}
+                placeholder="Ingrese una contraseña"
+                secureTextEntry
+                style={styles.input}
+                textContentType="password"
+                value={password}
+              />
+              <View>
+                <Text style={styles.error}>{error}</Text>
+              </View>
+              <View style={styles.containerButton}>
+                <Button title='Iniciar Sesión' onPress={handleSubmit} />
+              </View>
             </View>
           </View>
-        </View>
-      </SafeAreaView>
-    </ScrollView>
+        </SafeAreaView>
+      </ScrollView>
+    </ImageBackground>
   )
 }
 
