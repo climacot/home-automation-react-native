@@ -14,7 +14,7 @@ export default function AuthStatus() {
   return (
     <View>
       <Button
-        color="#FF3F3F"
+        color="#42A6FF"
         title="Cerrar sesión"
         onPress={() => {
           auth.signOut(() => navigate('/'))

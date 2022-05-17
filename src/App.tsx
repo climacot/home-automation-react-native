@@ -10,6 +10,7 @@ import React from 'react'
 import RequireAuth from './context/RequireAuth'
 import UserPage from './pages/User'
 import SearchUser from './pages/Search'
+import UpdatePage from './pages/Update'
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path={routes.admin} element={AdminProtectedPage} />
           <Route path="/create" element={<CreateUser />} />
           <Route path="/search" element={<SearchUser />} />
+          <Route path="/update" element={<UpdatePage />} />
         </Routes>
       </NativeRouter>
     </AuthProvider>

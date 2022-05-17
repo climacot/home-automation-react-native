@@ -1,8 +1,8 @@
 import { StyleSheet, Text, TouchableHighlight } from 'react-native'
 import React from 'react'
 
-export default function Button(props: any) {
-  const { onPress, children, color } = props
+export default function ButtonItem(props: any) {
+  const { onPress, children } = props
 
   return (
     <TouchableHighlight onPress={onPress} style={styles.container}>
@@ -14,12 +14,7 @@ export default function Button(props: any) {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    backgroundColor: '#1552C2',
+    backgroundColor: '#8DC9FF',
     borderRadius: 5,
-  },
-  title: {
-    color: '#fff',
-    fontSize: 17,
-    textAlign: 'center',
   },
 })
