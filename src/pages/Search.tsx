@@ -230,10 +230,6 @@ const styles = StyleSheet.create({
   contanierModify: {
     marginVertical: 10,
   },
-  containerText: {
-    width: 260,
-    overflow: 'hidden',
-  },
   container: {
     display: 'flex',
     alignItems: 'center',
@@ -254,6 +250,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    textAlign: 'auto',
+  },
+  containerText: {
+    maxWidth: 220
   },
   error: {
     color: '#FF0000',
