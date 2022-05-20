@@ -58,6 +58,7 @@ export default function CreateUser() {
   return (
     <ImageBackground style={{ height: '100%' }} source={require('../public/wallpaper.png')}>
       <ScrollView
+        keyboardShouldPersistTaps="handled"
         contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
         showsVerticalScrollIndicator={false}>
         <View style={styles.container}>

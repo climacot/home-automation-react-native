@@ -8,9 +8,9 @@ import IndexPage from './pages/Index'
 import LoginPage from './pages/Login'
 import React from 'react'
 import RequireAuth from './context/RequireAuth'
-import UserPage from './pages/User'
 import SearchUser from './pages/Search'
 import UpdatePage from './pages/Update'
+import UserPage from './pages/User'
 
 const App = () => {
   return (

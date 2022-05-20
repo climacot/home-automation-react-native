@@ -27,25 +27,32 @@ export default function LoginPage() {
 
   const srcLogo: ImageURISource = require('../../src/public/logo.png')
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (email.length === 0 || password.length === 0) {
       setError('Hay campos vacios, verifique por favor')
       return
     }
 
-    auth.signIn(
+    const cargo = auth.signIn(
       email,
       password,
       () => {},
       () => setError('Hay un error en el usuario o contraseña'),
     )
 
-    auth.user?.rol === 'administrador' ? navigate('/admin', { replace: true }) : navigate('/user', { replace: true })
+    cargo.then((www: any) => {
+      console.log(www)
+
+      if (www === null) return
+
+      www === 'administrador' ? navigate('/admin', { replace: true }) : navigate('/user', { replace: true })
+    })
   }
 
   return (
     <ImageBackground style={{ height: '100%' }} source={require('../public/wallpaper.png')}>
       <ScrollView
+        keyboardShouldPersistTaps="handled"
         contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
         showsVerticalScrollIndicator={false}>
         <SafeAreaView style={styles.container}>

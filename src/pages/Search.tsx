@@ -63,7 +63,7 @@ export default function SearchUser() {
 
   return (
     <ImageBackground style={{ height: '100%' }} source={require('../public/wallpaper.png')}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <Text style={styles.title}>Buscar usuario</Text>
         </View>
@@ -138,11 +138,10 @@ const Item = ({ index, item }: { index: number; item: any }) => {
       {
         text: 'Aceptar',
         onPress: () => {
-          reference
-            .update({
-              nombre: displayName,
-            })
-            .then(() => navigate('/'))
+          reference.update({
+            nombre: displayName,
+          })
+          navigate('/')
         },
       },
       {
@@ -253,7 +252,7 @@ const styles = StyleSheet.create({
     textAlign: 'auto',
   },
   containerText: {
-    maxWidth: 220
+    maxWidth: 220,
   },
   error: {
     color: '#FF0000',

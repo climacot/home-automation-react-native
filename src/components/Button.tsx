@@ -1,13 +1,13 @@
-import { StyleSheet, Text, TouchableHighlight } from 'react-native'
+import { Pressable, StyleSheet, Text, TouchableHighlight } from 'react-native'
 import React from 'react'
 
 export default function Button(props: any) {
   const { onPress, children, color } = props
 
   return (
-    <TouchableHighlight onPress={onPress} style={styles.container}>
+    <Pressable onPress={onPress} style={styles.container}>
       {children}
-    </TouchableHighlight>
+    </Pressable>
   )
 }
 
