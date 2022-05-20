@@ -51,9 +51,9 @@ export default function AdminPage() {
           <Text style={styles.dividerText}>Ayuda</Text>
         </View>
         <View style={styles.containerButtons}>
-          <ButtonLink title="Preguntas frecuentes" path="/" />
+          <ButtonLink title="Guia de administrador" path="/" />
           <View style={styles.separator} />
-          <ButtonLink title="PQR" path="/" />
+          <ButtonLink title="PQRS" path="/" />
           <View style={styles.separator} />
         </View>
       </ScrollView>

@@ -134,22 +134,26 @@ const Item = ({ index, item }: { index: number; item: any }) => {
   }
 
   const handleUpdate = () => {
-    Alert.alert('', 'Estas seguro de modificar al usuario?, serás redirigido al inicio', [
-      {
-        text: 'Aceptar',
-        onPress: () => {
-          reference.update({
-            nombre: displayName,
-          })
-          navigate('/')
+    if (displayName.length > 0 && id.length > 0 && phoneNumber.length > 0 && adress.length > 0) {
+      Alert.alert('', 'Estas seguro de modificar al usuario?, serás redirigido al inicio', [
+        {
+          text: 'Aceptar',
+          onPress: () => {
+            reference.update({
+              nombre: displayName,
+            })
+            navigate('/')
+          },
         },
-      },
-      {
-        text: 'Cancelar',
-        onPress: () => null,
-        style: 'cancel',
-      },
-    ])
+        {
+          text: 'Cancelar',
+          onPress: () => null,
+          style: 'cancel',
+        },
+      ])
+    } else {
+      Alert.alert('Todos los campos son obligatorios')
+    }
   }
 
   const handleClicl = () => {
