@@ -1,37 +1,12 @@
-import { SafeAreaView, Text, View, StyleSheet, Image, ImageBackground, ImageURISource } from 'react-native'
-import ButtonLink from '../components/ButtonLink'
+import { Text, StyleSheet } from 'react-native'
+import BackgroundLayout from '../components/layout/Background'
 import React from 'react'
-import useAuth from '../hooks/useAuth'
 
 export default function IndexPage() {
-  const auth = useAuth()
-  const srcLogo: ImageURISource = require('../../src/public/logo.png')
-  const srcWallpaper: ImageURISource = require('../../src/public/wallpaper.png')
-  const user = auth.user
-
-  if (user === undefined) {
-    return (
-      <View>
-        <Text>Cargando...</Text>
-      </View>
-    )
-  }
-
   return (
-    <ImageBackground source={srcWallpaper} style={styles.container}>
-      <SafeAreaView>
-        <View style={styles.subContainer}>
-          <Text style={styles.title}>Casa Domótica</Text>
-          <Image style={styles.logo} source={srcLogo} />
-          <Text style={styles.text}>
-            Proyecto de domótica para controlar una vivienda utilizando Arduino, Firebase y React Native!
-          </Text>
-          <View style={styles.containerButton}>
-            <ButtonLink path="/login" title="Iniciar Sesión" />
-          </View>
-        </View>
-      </SafeAreaView>
-    </ImageBackground>
+    <BackgroundLayout>
+      <Text></Text>
+    </BackgroundLayout>
   )
 }
 
@@ -65,3 +40,20 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
 })
+
+// return (
+//   <ImageBackground source={srcWallpaper} style={styles.container}>
+//     <SafeAreaView>
+//       <View style={styles.subContainer}>
+//         <Text style={styles.title}>Casa Domótica</Text>
+//         <Image style={styles.logo} source={srcLogo} />
+//         <Text style={styles.text}>
+//           Proyecto de domótica para controlar una vivienda utilizando Arduino, Firebase y React Native!
+//         </Text>
+//         <View style={styles.containerButton}>
+//           <ButtonLink path="/login" title="Iniciar Sesión" />
+//         </View>
+//       </View>
+//     </SafeAreaView>
+//   </ImageBackground>
+// )

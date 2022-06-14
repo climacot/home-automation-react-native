@@ -4,7 +4,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import auth from '@react-native-firebase/auth'
 import database from '@react-native-firebase/database'
 import React, { ReactNode, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-native'
 
 type ComponentProps = {
   children: ReactNode
@@ -15,13 +14,15 @@ export default function AuthProvider({ children }: ComponentProps) {
   // const navigate = useNavigate()
 
   useEffect(() => {
-    getData().then((userPromise: IUserInfo | null) => {
-      if (!userPromise) {
-        setUser(null)
-      } else {
-        setUser(userPromise)
-      }
-    }).catch((err) => console.log(err))
+    getData()
+      .then((userPromise: IUserInfo | null) => {
+        if (!userPromise) {
+          setUser(null)
+        } else {
+          setUser(userPromise)
+        }
+      })
+      .catch(err => console.log(err))
   }, [])
 
   const signIn = async (emailp: string, passwordp: string, callback: Function, callbackError: Function) => {
