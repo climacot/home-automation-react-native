@@ -1,13 +1,10 @@
 import { NativeRouter, Route, Routes } from 'react-router-native'
-import { routes } from './context/routes'
 import AdminPage from './pages/Admin'
-import Auth from './context/Auth'
 import AuthProvider from './context/AuthProvider'
 import CreateUser from './pages/Create'
 import IndexPage from './pages/Index'
 import LoginPage from './pages/Login'
 import React from 'react'
-import RequireAuth from './context/RequireAuth'
 import SearchUser from './pages/Search'
 import UpdatePage from './pages/Update'
 import UserPage from './pages/User'
@@ -17,13 +14,13 @@ const App = () => {
     <AuthProvider>
       <NativeRouter>
         <Routes>
-          <Route index element={LoginPublicPage} />
-          <Route path={routes.login} element={<LoginPage />} />
-          <Route path={routes.user} element={UserProtectedPage} />
-          <Route path={routes.admin} element={AdminProtectedPage} />
-          <Route path="/create" element={<CreateUser />} />
-          <Route path="/search" element={<SearchUser />} />
-          <Route path="/update" element={<UpdatePage />} />
+          <Route index element={<IndexPage />} />
+          <Route path={'/login'} element={<LoginPage />} />
+          <Route path={'/user'} element={<UserPage />} />
+          <Route path={'/admin'} element={<AdminPage />} />
+          <Route path={'/create'} element={<CreateUser />} />
+          <Route path={'/search'} element={<SearchUser />} />
+          <Route path={'/update'} element={<UpdatePage />} />
         </Routes>
       </NativeRouter>
     </AuthProvider>
@@ -31,21 +28,3 @@ const App = () => {
 }
 
 export default App
-
-const AdminProtectedPage = (
-  <RequireAuth>
-    <AdminPage />
-  </RequireAuth>
-)
-
-const UserProtectedPage = (
-  <RequireAuth>
-    <UserPage />
-  </RequireAuth>
-)
-
-const LoginPublicPage = (
-  <Auth>
-    <IndexPage />
-  </Auth>
-)

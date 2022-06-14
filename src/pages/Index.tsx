@@ -18,7 +18,7 @@ export default function IndexPage() {
         <Text style={styles.paragraph}>
           Proyecto de domótica para controlar una vivienda utilizando Arduino, Firebase y React Native!
         </Text>
-        <CustomLink title="Ir a inicio de sesión" to={'/login'} />
+        <CustomLink to={'/login'}>Ir a inicio de sesión</CustomLink>
       </View>
     </BackgroundLayout>
   )
