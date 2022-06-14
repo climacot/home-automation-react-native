@@ -1,11 +1,25 @@
-import { Text, StyleSheet } from 'react-native'
+import { Text, StyleSheet, View } from 'react-native'
 import BackgroundLayout from '../components/layout/Background'
+import CustomLink from '../components/Link/Link'
+import HomeAutomationLogo from '../components/logos/HomeAutomation'
 import React from 'react'
+import Title from '../components/title/Title'
 
 export default function IndexPage() {
   return (
     <BackgroundLayout>
-      <Text></Text>
+      <View style={styles.container}>
+        <View style={styles.containerLogo}>
+          <Title>Casa Domótica</Title>
+          <View style={{ marginTop: 50 }}>
+            <HomeAutomationLogo />
+          </View>
+        </View>
+        <Text style={styles.paragraph}>
+          Proyecto de domótica para controlar una vivienda utilizando Arduino, Firebase y React Native!
+        </Text>
+        <CustomLink title="Ir a inicio de sesión" to={'/login'} />
+      </View>
     </BackgroundLayout>
   )
 }
@@ -14,46 +28,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
+    padding: 5,
   },
-  subContainer: {
-    flex: 1,
+  containerLogo: {
+    display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 10,
   },
-  containerButton: {
-    marginTop: 30,
-  },
-  title: {
-    fontSize: 30,
-    color: '#093D9E',
-    fontWeight: 'bold',
-  },
-  logo: {
-    width: 200,
-    height: 200,
-    marginVertical: 50,
-  },
-  text: {
-    color: '#000',
+  paragraph: {
+    color: '#000000',
     fontSize: 17,
   },
 })
-
-// return (
-//   <ImageBackground source={srcWallpaper} style={styles.container}>
-//     <SafeAreaView>
-//       <View style={styles.subContainer}>
-//         <Text style={styles.title}>Casa Domótica</Text>
-//         <Image style={styles.logo} source={srcLogo} />
-//         <Text style={styles.text}>
-//           Proyecto de domótica para controlar una vivienda utilizando Arduino, Firebase y React Native!
-//         </Text>
-//         <View style={styles.containerButton}>
-//           <ButtonLink path="/login" title="Iniciar Sesión" />
-//         </View>
-//       </View>
-//     </SafeAreaView>
-//   </ImageBackground>
-// )

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-native'
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet, Text, TouchableHighlight } from 'react-native'
 import React from 'react'
 
 type ComponentProps = {
@@ -9,9 +9,11 @@ type ComponentProps = {
 
 export default function ButtonLink({ title, path }: ComponentProps) {
   return (
-    <Link style={styles.container} to={path}>
-      <Text style={styles.title}>{title}</Text>
-    </Link>
+    <TouchableHighlight style={styles.container}>
+      <Link to={path}>
+        <Text style={styles.title}>{title}</Text>
+      </Link>
+    </TouchableHighlight>
   )
 }
 

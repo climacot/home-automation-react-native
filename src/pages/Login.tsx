@@ -14,6 +14,10 @@ import Button from '../components/Button'
 import { useNavigate } from 'react-router-native'
 import useAuth from '../hooks/useAuth'
 import { BackHandlerPage } from '../androidComponents/BackHandlerPage'
+import BackgroundLayout from '../components/layout/Background'
+import Title from '../components/title/Title'
+import HomeAutomationLogo from '../components/logos/HomeAutomation'
+import CustomLink from '../components/Link/Link'
 
 export default function LoginPage() {
   const [email, setEmail] = useState<string>('')
@@ -50,91 +54,61 @@ export default function LoginPage() {
   }
 
   return (
-    <ImageBackground style={{ height: '100%' }} source={require('../public/wallpaper.png')}>
-      <ScrollView
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
-        showsVerticalScrollIndicator={false}>
-        <SafeAreaView style={styles.container}>
-          <View style={styles.container}>
-            <Text style={styles.title}>Inicio de sesión</Text>
-            <Image style={styles.logo} source={srcLogo} />
-            <View style={styles.containerInputs}>
-              <Text style={styles.textInputDetail}>Usuario</Text>
-              <TextInput
-                autoComplete="email"
-                onChangeText={setEmail}
-                placeholder="Ingrese un correo eléctronico"
-                style={styles.input}
-                textContentType="emailAddress"
-                value={email}
-              />
-              <Text style={styles.textInputDetail}>Contraseña</Text>
-              <TextInput
-                onChangeText={setPassword}
-                placeholder="Ingrese una contraseña"
-                secureTextEntry
-                style={styles.input}
-                textContentType="password"
-                value={password}
-              />
-              <View>
-                <Text style={styles.error}>{error}</Text>
-              </View>
-              <View style={styles.containerButton}>
-                <Button title="Iniciar Sesión" onPress={handleSubmit}>
-                  <Text style={styles.titleButton}>Iniciar Sesión</Text>
-                </Button>
-              </View>
-            </View>
+    <BackgroundLayout>
+      <View style={style.container}>
+        <View style={style.containerLogo}>
+          <Title>Inicio de sesión</Title>
+          <View style={{ marginTop: 50 }}>
+            <HomeAutomationLogo />
           </View>
-        </SafeAreaView>
-      </ScrollView>
-    </ImageBackground>
+        </View>
+        <View style={style.containerInputs}>
+          <Text>Usuario</Text>
+          <TextInput
+            autoComplete="email"
+            onChangeText={setEmail}
+            placeholder="Ingrese un correo eléctronico"
+            style={style.input}
+            textContentType="emailAddress"
+            value={email}
+          />
+          <Text>Contraseña</Text>
+          <TextInput
+            onChangeText={setPassword}
+            placeholder="Ingrese una contraseña"
+            secureTextEntry
+            style={style.input}
+            textContentType="password"
+            value={password}
+          />
+        </View>
+        <CustomLink to={'/'} title={'Iniciar Sesión'} />
+      </View>
+    </BackgroundLayout>
   )
 }
 
-const styles = StyleSheet.create({
-  titleButton: {
-    color: '#fff',
-    fontSize: 17,
-    textAlign: 'center',
-  },
+const style = StyleSheet.create({
   container: {
-    display: 'flex',
+    flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
+    padding: 5,
   },
   containerInputs: {
+    width: '100%',
+  },
+  containerLogo: {
     display: 'flex',
-    minWidth: 200,
-    width: 300,
-  },
-  containerButton: {
-    marginTop: 30,
-  },
-  title: {
-    fontSize: 30,
-    color: '#093D9E',
-    fontWeight: 'bold',
-  },
-  textInputDetail: {
-    marginBottom: 5,
-  },
-  logo: {
-    width: 200,
-    height: 200,
-    marginVertical: 50,
+    alignItems: 'center',
   },
   input: {
     padding: 10,
     borderWidth: 1,
     marginBottom: 10,
+    marginTop: 10,
     borderRadius: 5,
     borderColor: '#093D9E',
     fontSize: 17,
-  },
-  error: {
-    color: '#FF0000',
   },
 })
