@@ -1,25 +1,15 @@
-import { Button, Text, View } from 'react-native'
-import { useNavigate } from 'react-router-native'
+import { Button, View } from 'react-native'
 import React from 'react'
 import useAuth from '../hooks/useAuth'
 
 export default function AuthStatus() {
-  const auth = useAuth()
-  const navigate = useNavigate()
+  const { session, signOut } = useAuth()
 
-  if (!auth.user) {
-    return <Text>You are not logged in.</Text>
-  }
+  if (!session) return null
 
   return (
     <View>
-      <Button
-        color="#42A6FF"
-        title="Cerrar sesión"
-        onPress={() => {
-          auth.signOut(() => navigate('/'))
-        }}
-      />
+      <Button color={'#42A6FF'} title={'Cerrar sesión'} onPress={() => signOut()} />
     </View>
   )
 }
