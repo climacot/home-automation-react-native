@@ -1,10 +1,12 @@
-import { Text, StyleSheet, View } from 'react-native'
+import { Text, StyleSheet, View, Dimensions } from 'react-native'
 import BackgroundLayout from '../components/layout/Background'
 import CustomLink from '../components/Link/Link'
 import HomeAutomationLogo from '../components/logos/HomeAutomation'
 import React from 'react'
 import Title from '../components/title/Title'
 import Auth from '../context/Auth'
+
+const screenHeight = Dimensions.get('window').height
 
 export default function IndexPage() {
   return (
@@ -25,8 +27,9 @@ export default function IndexPage() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
+    flex: 1,
+    height: screenHeight,
     justifyContent: 'space-around',
     padding: 5,
   },

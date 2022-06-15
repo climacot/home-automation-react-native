@@ -1,11 +1,13 @@
 import { BackHandlerPage } from '../androidComponents/BackHandlerPage'
-import { StyleSheet, View } from 'react-native'
+import { Dimensions, StyleSheet, View } from 'react-native'
 import BackgroundLayout from '../components/layout/Background'
 import HomeAutomationLogo from '../components/logos/HomeAutomation'
 import LoginForm from '../components/Forms/Login'
 import React from 'react'
 import Title from '../components/title/Title'
 import Auth from '../context/Auth'
+
+const screenHeight = Dimensions.get('window').height
 
 export default function LoginPage() {
   BackHandlerPage()
@@ -25,8 +27,9 @@ export default function LoginPage() {
 
 const style = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
+    flex: 1,
+    height: screenHeight,
     justifyContent: 'space-around',
     padding: 5,
   },
