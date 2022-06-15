@@ -1,114 +1,63 @@
 import { BackHandlerExit } from '../androidComponents/BackHandlerExit'
-import { Image, ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import AuthStatus from '../context/AuthStatus'
-import ButtonLink from '../components/ButtonLink'
+import BackgroundLayout from '../components/layout/Background'
+import CustomLink from '../components/Link/Link'
+import HomeAutomationLogo from '../components/logos/HomeAutomation'
 import React from 'react'
+import RequireAuth from '../context/RequireAuth'
+import SimpleDivider from '../components/Divider/Simple'
+import Title from '../components/title/Title'
 import useAuth from '../hooks/useAuth'
+import UserImage from '../components/user/Image'
 
 export default function AdminPage() {
-  const auth = useAuth()
-  const user = auth.user
+  const { session } = useAuth()
 
   BackHandlerExit()
 
   return (
-    <ImageBackground source={require('../public/wallpaper.png')}>
-      <ScrollView>
-        <AuthStatus />
-        <View style={styles.container}>
-          <Text style={styles.title}>Panel de administración</Text>
-          <Image style={styles.logo} source={{ uri: user?.photoURL }} />
-        </View>
-        <View style={styles.containerInfo}>
-          <Text style={styles.font}>Nombre: {user?.displayName}</Text>
-          <Text style={styles.font}>Identificación: {user?.id}</Text>
-          <Text style={styles.font}>Cargo: {user?.rol}</Text>
-          <Text style={styles.font}>Correo: {user?.email}</Text>
-        </View>
-
-        <View style={styles.divider}>
-          <Text style={styles.dividerText}>Opciones de usuario</Text>
-        </View>
-
-        <View style={styles.containerButtons}>
-          <ButtonLink title="Registrar" path="/create" />
-          <View style={styles.separator} />
-          <ButtonLink title="Consultar" path="/search" />
-        </View>
-
-        <View style={styles.divider}>
-          <Text style={styles.dividerText}>Opciones de la aplicación</Text>
-        </View>
-
-        <View style={styles.containerButtons}>
-          <ButtonLink title="Distancia de sensores de luz" path="/" />
-          <View style={styles.separator} />
-          <ButtonLink title="Distancia detección de alarma" path="/" />
-          <View style={styles.separator} />
-        </View>
-
-        <View style={styles.divider}>
-          <Text style={styles.dividerText}>Ayuda</Text>
-        </View>
-        <View style={styles.containerButtons}>
-          <ButtonLink title="Guia de administrador" path="/" />
-          <View style={styles.separator} />
-          <ButtonLink title="PQRS" path="/" />
-          <View style={styles.separator} />
-        </View>
-      </ScrollView>
-    </ImageBackground>
+    <RequireAuth>
+      <BackgroundLayout>
+        <ScrollView>
+          <AuthStatus />
+          <Title>Panel de administración</Title>
+          {session?.photoURL && <UserImage source={{ uri: session?.photoURL }} />}
+          {!session?.photoURL && <HomeAutomationLogo />}
+          <Text style={styles.font}>Nombre: {session?.displayName}</Text>
+          <Text style={styles.font}>Identificación: {session?.id}</Text>
+          <Text style={styles.font}>Cargo: {session?.role}</Text>
+          <Text style={styles.font}>Correo: {session?.email}</Text>
+          <SimpleDivider>Opciones de usuario</SimpleDivider>
+          <View style={styles.containerButtons}>
+            <CustomLink to={'/create'}>Registrar</CustomLink>
+            <CustomLink to={'/search'}>Consultar</CustomLink>
+          </View>
+          <SimpleDivider>Opciones de la aplicación</SimpleDivider>
+          <View style={styles.containerButtons}>
+            <CustomLink to={'/'}>Distancia de sensores de luz</CustomLink>
+            <CustomLink to={'/'}>Distancia detección de alarma</CustomLink>
+          </View>
+          <SimpleDivider>Ayuda</SimpleDivider>
+          <View style={styles.containerButtons}>
+            <CustomLink to={'/'}>Guia de administrador</CustomLink>
+            <CustomLink to={'/'}>PQRS</CustomLink>
+          </View>
+        </ScrollView>
+      </BackgroundLayout>
+    </RequireAuth>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 30,
-  },
-  containerInfo: {
+  containerButtons: {
+    flex: 1,
+    height: 100,
+    justifyContent: 'space-between',
     paddingHorizontal: 10,
   },
-  containerButtons: {
-    display: 'flex',
-    flexDirection: 'column',
-    paddingHorizontal: 70,
-  },
-  active: {
-    backgroundColor: '#00C82A',
-  },
-  disable: {
-    backgroundColor: '#FF3F3F',
-  },
-  title: {
-    fontSize: 30,
-    marginBottom: 10,
-    color: '#000',
-  },
-  logo: {
-    width: 100,
-    height: 100,
-    marginBottom: 20,
-    borderRadius: 9999,
-  },
   font: {
-    color: '#000',
-    fontSize: 17,
-  },
-  divider: {
-    padding: 10,
-    backgroundColor: '#C5C5C5',
-    marginVertical: 10,
-  },
-  dividerText: {
-    textAlign: 'center',
     color: '#000000',
-    fontWeight: 'bold',
     fontSize: 17,
-  },
-  separator: {
-    marginBottom: 5,
   },
 })
