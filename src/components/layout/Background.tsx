@@ -5,8 +5,6 @@ type ComponentProps = {
   children: ReactNode
 }
 
-const screenHeight = Dimensions.get('window').height
-
 export default function BackgroundLayout({ children }: ComponentProps) {
   const src = require('../../public/wallpaper.png')
 
@@ -24,6 +22,6 @@ export default function BackgroundLayout({ children }: ComponentProps) {
 const style = StyleSheet.create({
   container: {
     width: '100%',
-    height: screenHeight,
+    height: '100%',
   },
 })
