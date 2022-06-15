@@ -1,7 +1,9 @@
+import { createUserDefalt } from '../../firebase/realtime'
 import { StyleSheet, Text, TextInput, View } from 'react-native'
+import auth from '@react-native-firebase/auth'
+import Button from '../Buttons/Button'
 import React, { useState } from 'react'
 import SimpleDivider from '../Divider/Simple'
-import Button from '../Buttons/Button'
 
 export default function CreateForm() {
   const [adress, setAdress] = useState('')
@@ -10,6 +12,40 @@ export default function CreateForm() {
   const [id, setId] = useState('')
   const [password, setPassword] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
+  const [message, setMessage] = useState('')
+
+  const handleClick = async () => {
+    if (
+      email.length === 0 ||
+      password.length === 0 ||
+      displayName.length === 0 ||
+      id.length === 0 ||
+      phoneNumber.length === 0
+    ) {
+      setMessage('Todos los campos son obligatorios')
+      return
+    }
+
+    try {
+      const userAuth = await auth().createUserWithEmailAndPassword(email, password)
+      await userAuth.user.updateProfile({ displayName })
+      const create = createUserDefalt(userAuth.user.uid, email, adress, id, displayName, phoneNumber)
+      if (!create) return
+      setMessage('Usuario creado con exito')
+      clearInputs()
+    } catch (error: any) {
+      setMessage(error.toString())
+    }
+  }
+
+  const clearInputs = () => {
+    setAdress('')
+    setDisplayName('')
+    setEmail('')
+    setId('')
+    setPassword('')
+    setPhoneNumber('')
+  }
 
   return (
     <View>
@@ -69,8 +105,9 @@ export default function CreateForm() {
           textContentType="password"
           value={password}
         />
+        <Text>{message}</Text>
         <View style={{ marginVertical: 30 }}>
-          <Button>Registrar</Button>
+          <Button onPress={handleClick}>Registrar</Button>
         </View>
       </View>
     </View>
