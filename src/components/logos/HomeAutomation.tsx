@@ -1,15 +1,23 @@
-import { Image, StyleSheet } from 'react-native'
+import { Image, StyleSheet, View } from 'react-native'
 import React from 'react'
 
 export default function HomeAutomationLogo() {
   const src = require('../../public/logo.png')
 
-  return <Image style={style.img} source={src} />
+  return (
+    <View style={style.container}>
+      <Image style={style.img} source={src} />
+    </View>
+  )
 }
 
 const style = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    display: 'flex',
+  },
   img: {
-    width: 200,
     height: 200,
+    width: 200,
   },
 })
