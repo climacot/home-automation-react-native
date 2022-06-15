@@ -13,5 +13,6 @@ const style = StyleSheet.create({
   title: {
     color: '#093D9E',
     fontSize: 30,
+    textAlign: 'center',
   },
 })
