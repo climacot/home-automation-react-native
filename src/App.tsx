@@ -6,7 +6,6 @@ import IndexPage from './pages/Index'
 import LoginPage from './pages/Login'
 import React from 'react'
 import SearchUser from './pages/Search'
-import UpdatePage from './pages/Update'
 import UserPage from './pages/User'
 
 const App = () => {
@@ -20,7 +19,6 @@ const App = () => {
           <Route path={'/admin'} element={<AdminPage />} />
           <Route path={'/create'} element={<CreateUser />} />
           <Route path={'/search'} element={<SearchUser />} />
-          <Route path={'/update'} element={<UpdatePage />} />
         </Routes>
       </NativeRouter>
     </AuthProvider>
