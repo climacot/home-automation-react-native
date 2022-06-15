@@ -1,9 +1,14 @@
-export interface IUserInfo {
-  displayName: string
+export interface Icredentials {
+  username: string
+  password: string
+}
+
+export interface Isession {
+  displayName: string | null
   email: string | null
-  id: string
-  phoneNumber: string
-  photoURL: string
-  rol: string
+  phoneNumber: string | null
+  photoURL: string | null
+  role: string
   uid: string
+  id: string | null
 }
