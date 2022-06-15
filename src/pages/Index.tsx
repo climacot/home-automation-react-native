@@ -4,23 +4,22 @@ import CustomLink from '../components/Link/Link'
 import HomeAutomationLogo from '../components/logos/HomeAutomation'
 import React from 'react'
 import Title from '../components/title/Title'
+import Auth from '../context/Auth'
 
 export default function IndexPage() {
   return (
-    <BackgroundLayout>
-      <View style={styles.container}>
-        <View style={styles.containerLogo}>
+    <Auth>
+      <BackgroundLayout>
+        <View style={styles.container}>
           <Title>Casa Domótica</Title>
-          <View style={{ marginTop: 50 }}>
-            <HomeAutomationLogo />
-          </View>
+          <HomeAutomationLogo />
+          <Text style={styles.paragraph}>
+            Proyecto de domótica para controlar una vivienda utilizando Arduino, Firebase y React Native!
+          </Text>
+          <CustomLink to={'/login'}>Ir a inicio de sesión</CustomLink>
         </View>
-        <Text style={styles.paragraph}>
-          Proyecto de domótica para controlar una vivienda utilizando Arduino, Firebase y React Native!
-        </Text>
-        <CustomLink to={'/login'}>Ir a inicio de sesión</CustomLink>
-      </View>
-    </BackgroundLayout>
+      </BackgroundLayout>
+    </Auth>
   )
 }
 
@@ -30,10 +29,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     padding: 5,
-  },
-  containerLogo: {
-    display: 'flex',
-    alignItems: 'center',
   },
   paragraph: {
     color: '#000000',
