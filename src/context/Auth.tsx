@@ -1,21 +1,20 @@
 import { Navigate, useLocation } from 'react-router-native'
-import React from 'react'
+import { View } from 'react-native'
+import React, { ReactNode } from 'react'
 import useAuth from '../hooks/useAuth'
 
 type ComponentProps = {
-  children: JSX.Element
+  children: ReactNode
 }
 
 export default function Auth({ children }: ComponentProps) {
-  const auth = useAuth()
   const location = useLocation()
-  const user = auth.user
+  const { session } = useAuth()
+  const role = session?.role
 
-  if (!user) return children
+  if (role === 'administrador') return <Navigate to="/admin" state={{ from: location }} replace />
+  if (role === 'usuario') return <Navigate to="/user" state={{ from: location }} replace />
+  if (session === undefined) return null
 
-  const { rol } = user
-
-  if (rol === 'administrador') return <Navigate to="/admin" state={{ from: location }} replace />
-  if (rol === 'usuario') return <Navigate to="/user" state={{ from: location }} replace />
-  return children
+  return <View>{children}</View>
 }
