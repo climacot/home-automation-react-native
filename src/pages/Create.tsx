@@ -11,7 +11,7 @@ export default function CreateUser() {
 
   return (
     <BackgroundLayout>
-      <ScrollView>
+      <ScrollView keyboardShouldPersistTaps="handled">
         <View style={style.container}>
           <Title>Registrar un usuario</Title>
           <UserAnonymousLogo />

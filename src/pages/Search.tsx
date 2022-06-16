@@ -9,15 +9,14 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableHighlight,
   TouchableWithoutFeedback,
   View,
 } from 'react-native'
-import Button from '../components/Button'
 import database from '@react-native-firebase/database'
 import React, { useEffect, useState } from 'react'
 import ButtonItem from '../components/ButtonItem'
-import { useLocation, useNavigate } from 'react-router-native'
+import { useNavigate } from 'react-router-native'
+import Button from '../components/Buttons/Button'
 
 export default function SearchUser() {
   const [name, setName] = useState<string>('')
@@ -75,9 +74,7 @@ export default function SearchUser() {
             placeholder="Nombre del usuario a buscar"
           />
           <View style={styles.containerButton}>
-            <Button title="Buscar" onPress={handleSubmit}>
-              <Text style={styles.titleButton}>Buscar</Text>
-            </Button>
+            <Button onPress={handleSubmit}>Buscar</Button>
           </View>
         </View>
         <View style={styles.divider}>
@@ -141,6 +138,9 @@ const Item = ({ index, item }: { index: number; item: any }) => {
           onPress: () => {
             reference.update({
               nombre: displayName,
+              telefono: phoneNumber,
+              direccion: adress,
+              identificacion: id,
             })
             navigate('/')
           },
