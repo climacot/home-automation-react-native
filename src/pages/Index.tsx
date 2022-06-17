@@ -1,26 +1,42 @@
-import { Text, StyleSheet, View, Dimensions } from 'react-native'
-import BackgroundLayout from '../components/layout/Background'
-import CustomLink from '../components/Link/Link'
-import HomeAutomationLogo from '../components/logos/HomeAutomation'
+import { Link } from 'react-router-native'
+import { Text, StyleSheet, View, Image } from 'react-native'
 import React from 'react'
-import Title from '../components/title/Title'
 import Auth from '../context/Auth'
 
-const screenHeight = Dimensions.get('window').height
-
 export default function IndexPage() {
+  const srcLogo = require('../public/logo5.png')
+
+  console.log('ddd')
+
   return (
     <Auth>
-      <BackgroundLayout>
-        <View style={styles.container}>
-          <Title>Casa Domótica</Title>
-          <HomeAutomationLogo />
-          <Text style={styles.paragraph}>
+      <View style={styles.container}>
+        <View style={{ alignItems: 'center', maxHeight: 350, width: '100%' }}>
+          <Image resizeMode="cover" style={styles.logo} source={srcLogo} />
+        </View>
+        <View>
+          <Text style={{ fontSize: 35, fontWeight: '700', textAlign: 'center', color: '#000000', lineHeight: 35 }}>
+            Controla tu casa
+          </Text>
+          <Text
+            style={{
+              fontSize: 35,
+              fontWeight: '700',
+              textAlign: 'center',
+              color: '#000000',
+              lineHeight: 35,
+              paddingBottom: 20,
+            }}>
+            en pocos pasos
+          </Text>
+          <Text style={{ fontSize: 15, textAlign: 'center', color: '#787878' }}>
             Proyecto de domótica para controlar una vivienda utilizando Arduino, Firebase y React Native!
           </Text>
-          <CustomLink to={'/login'}>Ir a inicio de sesión</CustomLink>
         </View>
-      </BackgroundLayout>
+        <Link underlayColor={'#F7F7F7'} style={styles.link} to={'/login'}>
+          <Text style={{ fontSize: 15, textAlign: 'center', color: '#FFFFFF' }}>Siguiente</Text>
+        </Link>
+      </View>
     </Auth>
   )
 }
@@ -28,13 +44,26 @@ export default function IndexPage() {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    backgroundColor: '#edf2f8',
+    display: 'flex',
     flex: 1,
-    height: screenHeight,
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     padding: 5,
   },
-  paragraph: {
-    color: '#000000',
-    fontSize: 17,
+  background: {
+    height: '100%',
+    width: '100%',
+  },
+  logo: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: '#0049ad',
+    borderRadius: 20,
+  },
+  link: {
+    backgroundColor: '#0496ff',
+    borderRadius: 15,
+    padding: 15,
+    width: '100%',
   },
 })

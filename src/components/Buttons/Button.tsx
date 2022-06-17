@@ -16,9 +16,9 @@ export default function Button({ onPress, children }: ComponentProps) {
 
 const style = StyleSheet.create({
   container: {
-    padding: 10,
-    backgroundColor: '#093D9E',
-    borderRadius: 5,
+    padding: 15,
+    backgroundColor: '#0496ff',
+    borderRadius: 15,
   },
   text: {
     fontSize: 17,

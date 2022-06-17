@@ -30,19 +30,17 @@ export default function LoginForm() {
   return (
     <View style={style.container}>
       <View style={style.containerInputs}>
-        <Text>Usuario*</Text>
         <TextInput
           autoComplete="email"
           onChangeText={setEmail}
-          placeholder="Ingrese un correo eléctronico"
+          placeholder="Usuario"
           style={style.input}
           textContentType="emailAddress"
           value={email}
         />
-        <Text>Contraseña*</Text>
         <TextInput
           onChangeText={setPassword}
-          placeholder="Ingrese una contraseña"
+          placeholder="Contraseña"
           secureTextEntry
           style={style.input}
           textContentType="password"
@@ -62,19 +60,19 @@ const style = StyleSheet.create({
     width: '100%',
   },
   containerInputs: {
-    marginBottom: 50,
+    marginBottom: 10,
   },
   containerLoader: {
     backgroundColor: '#ffffff',
     padding: 10,
   },
   input: {
-    borderColor: '#093D9E',
     borderRadius: 5,
-    borderWidth: 1,
-    fontSize: 17,
+    borderWidth: 0,
+    fontSize: 15,
     marginBottom: 10,
     marginTop: 10,
-    padding: 10,
+    padding: 15,
+    backgroundColor: '#FFFFFF'
   },
 })
