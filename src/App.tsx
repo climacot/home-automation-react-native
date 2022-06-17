@@ -4,11 +4,29 @@ import AuthProvider from './context/AuthProvider'
 import CreateUser from './pages/Create'
 import IndexPage from './pages/Index'
 import LoginPage from './pages/Login'
-import React from 'react'
+import React, { useState } from 'react'
 import SearchUser from './pages/Search'
 import UserPage from './pages/User'
+import { Image, Text, View } from 'react-native'
 
 const App = () => {
+  const [load, setLoad] = useState(true)
+  const src = require('./public/loader.gif')
+
+  if (load) {
+    setTimeout(() => {
+      setLoad(false)
+    }, 2000)
+
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={{ fontSize: 15 }}>Domótica 🤍</Text>
+        <Image source={src} />
+        <Text style={{ fontSize: 15 }}>Cargando la aplicación...</Text>
+      </View>
+    )
+  }
+
   return (
     <AuthProvider>
       <NativeRouter>
