@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { Image, StyleSheet, Text, TextInput, View } from 'react-native'
 import Button from '../Buttons/Button'
 import React, { useState } from 'react'
 import useAuth from '../../hooks/useAuth'
@@ -21,8 +21,20 @@ export default function LoginForm() {
 
   if (loader) {
     return (
-      <View style={style.containerLoader}>
-        <Text>Cargando...</Text>
+      <View
+        style={{
+          flex: 1,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#edf2f8',
+          position: 'relative',
+          height: '100%',
+          width: '100%',
+        }}>
+        <Text style={{ fontSize: 15 }}>Domótica 🤍</Text>
+        <Image style={{ marginTop: 200 }} source={require('../../public/loader.gif')} />
+        <Text style={{ fontSize: 15 }}>Cargando la aplicación...</Text>
       </View>
     )
   }
@@ -73,6 +85,6 @@ const style = StyleSheet.create({
     marginBottom: 10,
     marginTop: 10,
     padding: 15,
-    backgroundColor: '#FFFFFF'
+    backgroundColor: '#FFFFFF',
   },
 })
