@@ -1,5 +1,5 @@
 import { BackHandlerExit } from '../androidComponents/BackHandlerExit'
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import AuthStatus from '../context/AuthStatus'
 import BackgroundLayout from '../components/layout/Background'
 import CustomLink from '../components/Link/Link'
@@ -10,6 +10,7 @@ import SimpleDivider from '../components/Divider/Simple'
 import Title from '../components/title/Title'
 import useAuth from '../hooks/useAuth'
 import UserImage from '../components/user/Image'
+import { Link } from 'react-router-native'
 
 export default function AdminPage() {
   const { session } = useAuth()
@@ -18,40 +19,119 @@ export default function AdminPage() {
 
   return (
     <RequireAuth>
-      <BackgroundLayout>
-        <ScrollView>
-          <AuthStatus />
-          <Title>Panel de administración</Title>
-          {session?.photoURL && <UserImage source={{ uri: session?.photoURL }} />}
-          {!session?.photoURL && <HomeAutomationLogo />}
-          <Text style={styles.font}>Nombre: {session?.displayName}</Text>
-          <Text style={styles.font}>Identificación: {session?.id}</Text>
-          <Text style={styles.font}>Cargo: {session?.role}</Text>
-          <Text style={styles.font}>Correo: {session?.email}</Text>
-          <SimpleDivider>Opciones de usuario</SimpleDivider>
-          <View style={styles.containerButtons}>
-            <CustomLink to={'/create'}>Registrar</CustomLink>
-            <CustomLink to={'/search'}>Consultar</CustomLink>
+      <View style={{ backgroundColor: '#edf2f8', display: 'flex', height: '100%', justifyContent: 'space-between' }}>
+        <View style={{ padding: 20 }}>
+          <Text style={{ fontSize: 20, marginBottom: 10, color: '#000000' }}>Hola {session?.displayName}!</Text>
+          <Text>ID: {session?.id}</Text>
+          <View style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row', marginTop: 20 }}>
+            <Link
+              underlayColor={'#F7F7F7'}
+              to={'/create'}
+              style={{
+                padding: 20,
+                backgroundColor: '#FFFFFF',
+                borderRadius: 20,
+                flexGrow: 1,
+                margin: 10,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minWidth: 120,
+              }}>
+              <>
+                <Image style={{ height: 30, width: 30 }} source={require('../public/user.png')} />
+                <Text>Registrar</Text>
+              </>
+            </Link>
+            <Link
+              underlayColor={'#F7F7F7'}
+              to={'/search'}
+              style={{
+                padding: 20,
+                backgroundColor: '#FFFFFF',
+                borderRadius: 20,
+                flexGrow: 1,
+                margin: 10,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minWidth: 120,
+              }}>
+              <>
+                <Image style={{ height: 30, width: 30 }} source={require('../public/search.png')} />
+                <Text>Consultar</Text>
+              </>
+            </Link>
+            <Link
+              underlayColor={'#F7F7F7'}
+              to={'/search'}
+              style={{
+                padding: 20,
+                backgroundColor: '#FFFFFF',
+                borderRadius: 20,
+                flexGrow: 1,
+                margin: 10,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minWidth: 120,
+              }}>
+              <>
+                <Image style={{ height: 30, width: 30 }} source={require('../public/check.png')} />
+                <Text>Editar</Text>
+              </>
+            </Link>
+            <Link
+              underlayColor={'#F7F7F7'}
+              to={'/search'}
+              style={{
+                padding: 20,
+                backgroundColor: '#FFFFFF',
+                borderRadius: 20,
+                flexGrow: 1,
+                margin: 10,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minWidth: 120,
+              }}>
+              <>
+                <Image style={{ height: 30, width: 30 }} source={require('../public/delete.png')} />
+                <Text>Eliminar</Text>
+              </>
+            </Link>
           </View>
-          <SimpleDivider>Opciones de la aplicación</SimpleDivider>
-          <View style={styles.containerButtons}>
-            <CustomLink to={'/'}>Distancia de sensores de luz</CustomLink>
-            <CustomLink to={'/'}>Distancia detección de alarma</CustomLink>
-          </View>
-          <SimpleDivider>Ayuda</SimpleDivider>
-          <View style={styles.containerButtons}>
-            <CustomLink to={'/'}>Guia de administrador</CustomLink>
-            <CustomLink to={'/'}>PQRS</CustomLink>
-          </View>
-        </ScrollView>
-      </BackgroundLayout>
+        </View>
+        <Text style={{ textAlign: 'center' }}>Otras opciones</Text>
+        <View style={styles.containerButtons}>
+          <CustomLink to={'/'}>Guia de administrador</CustomLink>
+          <CustomLink to={'/'}>PQRS</CustomLink>
+        </View>
+        <View
+          style={{
+            padding: 20,
+            display: 'flex',
+            flexDirection: 'row',
+            width: '100%',
+            justifyContent: 'space-between',
+          }}>
+          <Link underlayColor={'#edf2f8'} to={'/admin'} style={{ padding: 10 }}>
+            <Image style={{ height: 25, width: 25 }} source={require('../public/home.png')} />
+          </Link>
+          <Link underlayColor={'#edf2f8'} to={'/admin'} style={{ padding: 10 }}>
+            <Image style={{ height: 25, width: 25 }} source={require('../public/control.png')} />
+          </Link>
+          <Link underlayColor={'#edf2f8'} to={'/profile'} style={{ padding: 10 }}>
+            <Image style={{ height: 25, width: 25 }} source={require('../public/profile.png')} />
+          </Link>
+        </View>
+      </View>
     </RequireAuth>
   )
 }
 
 const styles = StyleSheet.create({
   containerButtons: {
-    flex: 1,
     height: 100,
     justifyContent: 'space-between',
     paddingHorizontal: 10,
