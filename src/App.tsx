@@ -8,6 +8,7 @@ import React, { useState } from 'react'
 import SearchUser from './pages/Search'
 import UserPage from './pages/User'
 import { Image, Text, View } from 'react-native'
+import ProfilePage from './pages/Profile'
 
 const App = () => {
   const [load, setLoad] = useState(true)
@@ -37,6 +38,7 @@ const App = () => {
           <Route path={'/admin'} element={<AdminPage />} />
           <Route path={'/create'} element={<CreateUser />} />
           <Route path={'/search'} element={<SearchUser />} />
+          <Route path={'/profile'} element={<ProfilePage />} />
         </Routes>
       </NativeRouter>
     </AuthProvider>
