@@ -16,5 +16,5 @@ export default function Auth({ children }: ComponentProps) {
   if (role === 'usuario') return <Navigate to="/user" state={{ from: location }} replace />
   if (session === undefined) return null
 
-  return <View>{children}</View>
+  return <>{children}</>
 }

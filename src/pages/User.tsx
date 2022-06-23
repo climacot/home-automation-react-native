@@ -1,52 +1,45 @@
 import { BackHandlerExit } from '../androidComponents/BackHandlerExit'
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
-import AuthStatus from '../context/AuthStatus'
-import BackgroundLayout from '../components/layout/Background'
-import CustomLink from '../components/Link/Link'
+import { Text, TouchableHighlight, View } from 'react-native'
 import React from 'react'
 import RequireAuth from '../context/RequireAuth'
-import SimpleDivider from '../components/Divider/Simple'
-import Title from '../components/title/Title'
 import useAuth from '../hooks/useAuth'
-import UserAnonymousLogo from '../components/logos/UserAnonymous'
+import useMode from '../hooks/useMode'
+import UserMenu from '../newComponents/menus/user/manual'
+import UserMenuAutomatic from '../newComponents/menus/user/automatico'
+import UserNav from '../newComponents/navs/user'
 
 export default function UserPage() {
   const { session } = useAuth()
+  const { menu, setMenu } = useMode()
 
   BackHandlerExit()
 
   return (
     <RequireAuth>
-      <BackgroundLayout>
-        <ScrollView>
-          <AuthStatus />
-          <Title>Panel de usuario</Title>
-          {/* {session?.photoURL && <UserImage source={{ uri: session?.photoURL }} />} */}
-          {!session?.photoURL && <UserAnonymousLogo />}
-          <Text style={style.font}>Nombre: {session?.displayName}</Text>
-          <Text style={style.font}>Identificación: {session?.id}</Text>
-          <Text style={style.font}>Cargo: {session?.role}</Text>
-          <Text style={style.font}>Correo: {session?.email}</Text>
-          <SimpleDivider>Opciones</SimpleDivider>
-          <View style={style.containerButtons}>
-            <CustomLink to={'/'}>Modo manual</CustomLink>
-            <CustomLink to={'/'}>Modo automatico</CustomLink>
+      <View style={{ backgroundColor: '#edf2f8', display: 'flex', height: '100%', justifyContent: 'space-between' }}>
+        <View style={{ padding: 20 }}>
+          <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+            <View>
+              <Text style={{ fontSize: 20, marginBottom: 10, color: '#000000' }}>Hola {session?.displayName}!</Text>
+              <Text>ID: {session?.id}</Text>
+            </View>
+            <TouchableHighlight
+              onPress={() => setMenu(!menu)}
+              style={{
+                backgroundColor: '#0496ff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 5,
+                padding: 10,
+              }}>
+              {menu ? <Text>Manual</Text> : <Text>Automatico</Text>}
+            </TouchableHighlight>
           </View>
-        </ScrollView>
-      </BackgroundLayout>
+          {menu ? <UserMenu /> : <UserMenuAutomatic />}
+        </View>
+        <UserNav />
+      </View>
     </RequireAuth>
   )
 }
-
-const style = StyleSheet.create({
-  font: {
-    color: '#000000',
-    fontSize: 17,
-  },
-  containerButtons: {
-    flex: 1,
-    height: 100,
-    justifyContent: 'space-between',
-    paddingHorizontal: 10,
-  },
-})

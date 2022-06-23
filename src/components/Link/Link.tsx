@@ -18,7 +18,7 @@ export default function CustomLink({ to, children }: ComponentProps) {
 const style = StyleSheet.create({
   container: {
     padding: 10,
-    backgroundColor: '#093D9E',
+    backgroundColor: '#0496ff',
     borderRadius: 5,
     width: '100%',
   },
