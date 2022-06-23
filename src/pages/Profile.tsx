@@ -1,20 +1,17 @@
-import { Image, StyleSheet, Text, Touchable, TouchableHighlight, TouchableWithoutFeedback, View } from 'react-native'
-import React from 'react'
+import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 import { Link } from 'react-router-native'
-import UserImage from '../components/user/Image'
 import HomeAutomationLogo from '../components/logos/HomeAutomation'
-import useAuth from '../hooks/useAuth'
+import React from 'react'
 import RequireAuth from '../context/RequireAuth'
+import useAuth from '../hooks/useAuth'
 
 export default function ProfilePage() {
   const { session, signOut } = useAuth()
+
   return (
     <RequireAuth>
       <View style={{ backgroundColor: '#edf2f8', display: 'flex', height: '100%', justifyContent: 'space-between' }}>
-        <View style={{ marginTop: 100 }}>
-          {session?.photoURL && <UserImage source={{ uri: session?.photoURL }} />}
-          {!session?.photoURL && <HomeAutomationLogo />}
-        </View>
+        <View style={{ marginTop: 100 }}>{!session?.photoURL && <HomeAutomationLogo />}</View>
         <View style={{ marginVertical: 50, padding: 20 }}>
           <Text style={styles.font}>Nombre: {session?.displayName}</Text>
           <Text style={styles.font}>Identificación: {session?.id}</Text>
@@ -36,13 +33,13 @@ export default function ProfilePage() {
             width: '100%',
             justifyContent: 'space-between',
           }}>
-          <Link underlayColor={'#edf2f8'} to={'/admin'} style={{ padding: 10 }}>
+          <Link underlayColor={'#edf2f8'} to={session?.role === 'admin' ? '/admin' : '/user'} style={{ padding: 10 }}>
             <Image style={{ height: 25, width: 25 }} source={require('../public/home.png')} />
           </Link>
-          <Link underlayColor={'#edf2f8'} to={'/admin'} style={{ padding: 10 }}>
+          <Link underlayColor={'#edf2f8'} to={session?.role === 'admin' ? '/admin' : '/user'} style={{ padding: 10 }}>
             <Image style={{ height: 25, width: 25 }} source={require('../public/control.png')} />
           </Link>
-          <Link underlayColor={'#edf2f8'} to={'/admin'} style={{ padding: 10 }}>
+          <Link underlayColor={'#edf2f8'} to={session?.role === 'admin' ? '/admin' : '/user'} style={{ padding: 10 }}>
             <Image style={{ height: 25, width: 25 }} source={require('../public/profile.png')} />
           </Link>
         </View>

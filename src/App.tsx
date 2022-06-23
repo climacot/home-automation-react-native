@@ -9,6 +9,7 @@ import SearchUser from './pages/Search'
 import UserPage from './pages/User'
 import { Image, Text, View } from 'react-native'
 import ProfilePage from './pages/Profile'
+import ModeProvider from './context/Mode'
 
 const App = () => {
   const [load, setLoad] = useState(true)
@@ -30,17 +31,19 @@ const App = () => {
 
   return (
     <AuthProvider>
-      <NativeRouter>
-        <Routes>
-          <Route index element={<IndexPage />} />
-          <Route path={'/login'} element={<LoginPage />} />
-          <Route path={'/user'} element={<UserPage />} />
-          <Route path={'/admin'} element={<AdminPage />} />
-          <Route path={'/create'} element={<CreateUser />} />
-          <Route path={'/search'} element={<SearchUser />} />
-          <Route path={'/profile'} element={<ProfilePage />} />
-        </Routes>
-      </NativeRouter>
+      <ModeProvider>
+        <NativeRouter>
+          <Routes>
+            <Route index element={<IndexPage />} />
+            <Route path={'/login'} element={<LoginPage />} />
+            <Route path={'/user'} element={<UserPage />} />
+            <Route path={'/admin'} element={<AdminPage />} />
+            <Route path={'/create'} element={<CreateUser />} />
+            <Route path={'/search'} element={<SearchUser />} />
+            <Route path={'/profile'} element={<ProfilePage />} />
+          </Routes>
+        </NativeRouter>
+      </ModeProvider>
     </AuthProvider>
   )
 }

@@ -6,8 +6,6 @@ import Auth from '../context/Auth'
 export default function IndexPage() {
   const srcLogo = require('../public/logo5.png')
 
-  console.log('ddd')
-
   return (
     <Auth>
       <View style={styles.container}>
