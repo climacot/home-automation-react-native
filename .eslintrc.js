@@ -13,6 +13,8 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
-    'space-before-function-paren': 'off'
+    'space-before-function-paren': 'off',
+    'react/prop-types': 'off',
+    'no-unused-vars': 'off'
   }
 }
