@@ -8,43 +8,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:351322956257:android:b7af5feda056abb5cef2a0",
-        "android_client_info": {
-          "package_name": "com.domotica"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "351322956257-tsrhsuc2he4p8fts4ob63u4gei37d0jo.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.domotica",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
-          }
-        },
-        {
-          "client_id": "351322956257-jeeg9s0pfnug3s4pe5nmijrf15p9pdpf.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBBnOhyEYR6tivy9EAw-jB00KMXV_6pUmM"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "351322956257-jeeg9s0pfnug3s4pe5nmijrf15p9pdpf.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:351322956257:android:4eed34525512ed17cef2a0",
         "android_client_info": {
           "package_name": "com.homeautomation"

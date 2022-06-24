@@ -1,8 +1,8 @@
-import { BackHandlerExit } from '../androidComponents/BackHandlerExit'
+import { BackHandlerExit } from '../../source/components/androidComponents/BackHandlerExit'
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import AuthStatus from '../context/AuthStatus'
 import BackgroundLayout from '../components/layout/Background'
-import CustomLink from '../components/Link/Link'
+import CustomLink from '../../source/components/Link/Link'
 import HomeAutomationLogo from '../components/logos/HomeAutomation'
 import React from 'react'
 import RequireAuth from '../context/RequireAuth'
@@ -36,7 +36,7 @@ export default function AdminPage() {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                minWidth: 120,
+                minWidth: 120
               }}>
               <>
                 <Image style={{ height: 30, width: 30 }} source={require('../public/user.png')} />
@@ -55,7 +55,7 @@ export default function AdminPage() {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                minWidth: 120,
+                minWidth: 120
               }}>
               <>
                 <Image style={{ height: 30, width: 30 }} source={require('../public/search.png')} />
@@ -74,7 +74,7 @@ export default function AdminPage() {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                minWidth: 120,
+                minWidth: 120
               }}>
               <>
                 <Image style={{ height: 30, width: 30 }} source={require('../public/check.png')} />
@@ -93,7 +93,7 @@ export default function AdminPage() {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                minWidth: 120,
+                minWidth: 120
               }}>
               <>
                 <Image style={{ height: 30, width: 30 }} source={require('../public/delete.png')} />
@@ -113,7 +113,7 @@ export default function AdminPage() {
             display: 'flex',
             flexDirection: 'row',
             width: '100%',
-            justifyContent: 'space-between',
+            justifyContent: 'space-between'
           }}>
           <Link underlayColor={'#edf2f8'} to={'/admin'} style={{ padding: 10 }}>
             <Image style={{ height: 25, width: 25 }} source={require('../public/home.png')} />
@@ -134,10 +134,10 @@ const styles = StyleSheet.create({
   containerButtons: {
     height: 100,
     justifyContent: 'space-between',
-    paddingHorizontal: 10,
+    paddingHorizontal: 10
   },
   font: {
     color: '#000000',
-    fontSize: 17,
-  },
+    fontSize: 17
+  }
 })
