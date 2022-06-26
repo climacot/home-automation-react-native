@@ -13,9 +13,9 @@ export default function UserProvider({ children }) {
     return subscriber // unsubscribe on unmount
   }, [])
 
-  const login = async credentials => {
+  const login = async (credentials, onError) => {
     const { username, password } = credentials
-    const user = await loginWithEmailAndPassword({ username, password })
+    const user = await loginWithEmailAndPassword({ username, password }, onError)
     if (!user) return
     setUser(user)
   }
@@ -24,7 +24,10 @@ export default function UserProvider({ children }) {
 
   // Handle user state changes
   async function onAuthStateChangedAndInitializing(user) {
-    if (!user) return
+    if (!user) {
+      setInitializing(false)
+      return
+    }
 
     const { uid, email } = user
     const { cargo, nombre, foto, identificacion } = await getDataUser(uid)

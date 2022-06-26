@@ -5,7 +5,7 @@ export const onAuthStateChanged = callback => {
   return auth().onAuthStateChanged(callback)
 }
 
-export const loginWithEmailAndPassword = async credentials => {
+export const loginWithEmailAndPassword = async (credentials, onError) => {
   try {
     const { username, password } = credentials
     const userCredential = await auth().signInWithEmailAndPassword(username, password)
@@ -20,6 +20,7 @@ export const loginWithEmailAndPassword = async credentials => {
     }
   } catch (error) {
     console.log(error)
+    onError(error.toString())
     return null
   }
 }

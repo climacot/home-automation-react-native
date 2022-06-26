@@ -23,7 +23,7 @@ export default function IndexPage() {
               textAlign: 'center',
               color: '#000000',
               lineHeight: 35,
-              paddingBottom: 20,
+              paddingBottom: 20
             }}>
             en pocos pasos
           </Text>
@@ -46,22 +46,22 @@ const styles = StyleSheet.create({
     display: 'flex',
     flex: 1,
     justifyContent: 'space-between',
-    padding: 5,
+    padding: 5
   },
   background: {
     height: '100%',
-    width: '100%',
+    width: '100%'
   },
   logo: {
     height: '100%',
     width: '100%',
     backgroundColor: '#0049ad',
-    borderRadius: 20,
+    borderRadius: 20
   },
   link: {
     backgroundColor: '#0496ff',
     borderRadius: 15,
     padding: 15,
-    width: '100%',
-  },
+    width: '100%'
+  }
 })
