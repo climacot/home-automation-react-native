@@ -16,7 +16,14 @@ export default function LoginPage() {
           <Text>Puedes iniciar sesión</Text>
           <LoginForm />
         </View>
-        <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: 5
+          }}>
           <Text>Proyecto creado para Unicauca</Text>
           <Image
             style={{ height: 30, width: 30, borderRadius: 9999, marginLeft: 10 }}

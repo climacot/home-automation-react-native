@@ -3,16 +3,14 @@ import React from 'react'
 import Container from '../components/layouts/container'
 import Card from '../components/links/card'
 import Nav from '../components/navs/nav'
+import HeaderUserInfo from '../components/layouts/headerInfoUser'
 
 export default function AdminPage() {
   return (
     <Container>
-      <View style={{ padding: 5 }}>
-        <Text style={{ fontSize: 20, color: '#000000' }}>Hola Climaco Fernando Rodriguez Tovar!</Text>
-        <Text>ID: 1083931167</Text>
-      </View>
+      <HeaderUserInfo />
       <View>
-        <Text style={{ textAlign: 'center', marginVertical: 10 }}>Administración</Text>
+        <Text style={{ textAlign: 'center', marginVertical: 10, color: '#000000' }}>Administración</Text>
         <View style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row', padding: 10 }}>
           <Card>
             <Image style={{ width: 30, height: 30, marginBottom: 10 }} source={require('../assets/user.png')} />
@@ -31,7 +29,7 @@ export default function AdminPage() {
             <Text>Editar</Text>
           </Card>
         </View>
-        <Text style={{ textAlign: 'center', marginVertical: 10 }}>Otras opciones</Text>
+        <Text style={{ textAlign: 'center', marginVertical: 10, color: '#000000' }}>Otras opciones</Text>
         <View style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row', padding: 10 }}>
           <Card>
             <Image style={{ width: 40, height: 40, marginBottom: 10 }} source={require('../assets/manual.png')} />
@@ -43,9 +41,7 @@ export default function AdminPage() {
           </Card>
         </View>
       </View>
-      <View>
-        <Nav />
-      </View>
+      <Nav />
     </Container>
   )
 }

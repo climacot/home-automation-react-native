@@ -20,7 +20,10 @@ export default function UserProvider({ children }) {
     setUser(user)
   }
 
-  const singout = async () => await signOut()
+  const singout = async () => {
+    await signOut()
+    setUser(null)
+  }
 
   // Handle user state changes
   async function onAuthStateChangedAndInitializing(user) {

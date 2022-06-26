@@ -1,10 +1,9 @@
 import React from 'react'
-import { View } from 'react-native'
-import Link from './link'
+import ButtonWithoutBackground from './buttonWithoutBackground'
 
 export default function Card({ children, ...restProps }) {
   return (
-    <Link
+    <ButtonWithoutBackground
       style={{
         alignItems: 'center',
         backgroundColor: '#FFFFFF',
@@ -19,6 +18,6 @@ export default function Card({ children, ...restProps }) {
       }}
       {...restProps}>
       <>{children}</>
-    </Link>
+    </ButtonWithoutBackground>
   )
 }
