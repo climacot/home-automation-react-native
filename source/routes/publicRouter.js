@@ -6,8 +6,8 @@ import { Navigate } from 'react-router-native'
 export default function PublicRouter({ children }) {
   const { user } = useUser()
 
-  if (user.cargo === 'administrador') return <Navigate to={'/admin'} />
-  if (user.cargo === 'usuario') return <Navigate to={'/user'} />
+  if (user && user.cargo === 'administrador') return <Navigate to={'/admin'} />
+  if (user && user.cargo === 'usuario') return <Navigate to={'/user'} />
 
   return children
 }

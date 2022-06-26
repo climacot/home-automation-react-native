@@ -11,9 +11,11 @@ export default function IndexPage() {
         <LogoWithBackground />
       </View>
       <Text style={{ textAlign: 'center', fontSize: 20 }}>Controla tu casa en pocos pasos</Text>
-      <Link to={'/login'}>
-        <Text style={{ textAlign: 'center', color: '#FFFFFF' }}>Siguiente</Text>
-      </Link>
+      <View style={{ marginBottom: 5 }}>
+        <Link to={'/login'}>
+          <Text style={{ textAlign: 'center', color: '#FFFFFF' }}>Siguiente</Text>
+        </Link>
+      </View>
     </Container>
   )
 }
