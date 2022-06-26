@@ -1,5 +1,6 @@
 import { Link as LinkReactRouterNative } from 'react-router-native'
 import React from 'react'
+import { View } from 'react-native'
 
 export default function Link({ children, ...restProps }) {
   return (

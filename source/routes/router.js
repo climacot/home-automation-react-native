@@ -13,9 +13,10 @@ export default function AppRouter() {
     <UserProvider>
       <NativeRouter>
         <Routes>
-          <Route index element={<IndexPage />} />
+          <Route path={'/'} element={<AdminPage />} />
+          {/* <Route index element={<IndexPage />} />
           <Route path={'/login'} element={<LoginPage />} />
-          {/* <Route
+           <Route
             index
             element={
               <PublicRouter>

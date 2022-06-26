@@ -36,7 +36,7 @@ export default function AdminPage() {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                minWidth: 120
+                minWidth: 140
               }}>
               <>
                 <Image style={{ height: 30, width: 30 }} source={require('../public/user.png')} />
