@@ -11,7 +11,7 @@ export default function Container({ children }) {
         height: screenHeight,
         justifyContent: 'space-between',
         backgroundColor: '#EDF2F8',
-        padding: 5
+        paddingHorizontal: 5
       }}>
       {children}
     </View>

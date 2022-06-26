@@ -10,7 +10,7 @@ export default function UserNav() {
         display: 'flex',
         flexDirection: 'row',
         width: '100%',
-        justifyContent: 'space-between',
+        justifyContent: 'space-between'
       }}>
       <Link underlayColor={'#edf2f8'} to={'/user'} style={{ padding: 10 }}>
         <Image style={{ height: 25, width: 25 }} source={require('../../public/home.png')} />
