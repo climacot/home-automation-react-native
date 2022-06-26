@@ -13,9 +13,9 @@ export default function UserProvider({ children }) {
     return subscriber // unsubscribe on unmount
   }, [])
 
-  const login = async credentials => {
+  const login = async (credentials, onError) => {
     const { username, password } = credentials
-    const user = await loginWithEmailAndPassword({ username, password })
+    const user = await loginWithEmailAndPassword({ username, password }, onError)
     if (!user) return
     setUser(user)
   }
