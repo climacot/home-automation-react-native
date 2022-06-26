@@ -24,7 +24,10 @@ export default function UserProvider({ children }) {
 
   // Handle user state changes
   async function onAuthStateChangedAndInitializing(user) {
-    if (!user) return
+    if (!user) {
+      setInitializing(false)
+      return
+    }
 
     const { uid, email } = user
     const { cargo, nombre, foto, identificacion } = await getDataUser(uid)
