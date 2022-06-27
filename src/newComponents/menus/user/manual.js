@@ -19,7 +19,7 @@ export default function UserMenuManual() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            minWidth: 120,
+            minWidth: 120
           }}>
           <>
             <Image style={{ height: 30, width: 30 }} source={require('../../../public/user.png')} />
@@ -38,7 +38,7 @@ export default function UserMenuManual() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            minWidth: 120,
+            minWidth: 120
           }}>
           <>
             <Image style={{ height: 30, width: 30 }} source={require('../../../public/user.png')} />
@@ -60,7 +60,7 @@ export default function UserMenuManual() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            minWidth: 120,
+            minWidth: 120
           }}>
           <>
             <Image style={{ height: 30, width: 30 }} source={require('../../../public/user.png')} />
@@ -82,7 +82,7 @@ export default function UserMenuManual() {
             justifyContent: 'space-between',
             alignItems: 'center',
             maxWidth: 80,
-            flexGrow: 1,
+            flexGrow: 1
           }}>
           <>
             <Image style={{ height: 30, width: 30 }} source={require('../../../public/user.png')} />
@@ -101,7 +101,7 @@ export default function UserMenuManual() {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            flexGrow: 1,
+            flexGrow: 1
           }}>
           <>
             <Image style={{ height: 30, width: 30 }} source={require('../../../public/user.png')} />
@@ -120,7 +120,7 @@ export default function UserMenuManual() {
             justifyContent: 'space-between',
             alignItems: 'center',
             maxWidth: 80,
-            flexGrow: 1,
+            flexGrow: 1
           }}>
           <>
             <Image style={{ height: 30, width: 30 }} source={require('../../../public/user.png')} />
@@ -139,7 +139,7 @@ export default function UserMenuManual() {
             justifyContent: 'space-between',
             alignItems: 'center',
             maxWidth: 80,
-            flexGrow: 1,
+            flexGrow: 1
           }}>
           <>
             <Image style={{ height: 30, width: 30 }} source={require('../../../public/user.png')} />

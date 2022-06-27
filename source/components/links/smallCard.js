@@ -10,10 +10,9 @@ export default function SmallCard({ children, ...restProps }) {
         borderRadius: 10,
         display: 'flex',
         justifyContent: 'center',
-        margin: 10,
-        padding: 20,
+        margin: 5,
         flexGrow: 1,
-        maxWidth: 70
+        paddingVertical: 10
       }}
       {...restProps}>
       <>{children}</>
