@@ -13,7 +13,6 @@ export default function LoginPage() {
           <Image style={{ borderRadius: 9999, height: 200, width: 200 }} source={require('../public/logo.png')} />
         </View>
         <View>
-          <Text>Puedes iniciar sesión</Text>
           <LoginForm />
         </View>
         <View

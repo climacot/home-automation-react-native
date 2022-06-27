@@ -1,6 +1,7 @@
 import { getDataUser } from '../services/database'
 import { loginWithEmailAndPassword, onAuthStateChanged, signOut } from '../services/auth'
 import React, { createContext, useEffect, useState } from 'react'
+import LoaderPage from '../pages/loader'
 
 export const UserContext = createContext()
 
@@ -13,10 +14,11 @@ export default function UserProvider({ children }) {
     return subscriber // unsubscribe on unmount
   }, [])
 
-  const login = async (credentials, onError) => {
+  const login = async (credentials, onSuccess, onError) => {
     const { username, password } = credentials
     const user = await loginWithEmailAndPassword({ username, password }, onError)
     if (!user) return
+    onSuccess()
     setUser(user)
   }
 
@@ -47,7 +49,7 @@ export default function UserProvider({ children }) {
     if (initializing) setInitializing(false)
   }
 
-  if (initializing) return null
+  if (initializing) return <LoaderPage />
 
   return <UserContext.Provider value={{ user, login, singout }}>{children}</UserContext.Provider>
 }
