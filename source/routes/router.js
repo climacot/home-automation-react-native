@@ -8,6 +8,7 @@ import PublicRouter from './publicRouter'
 import React from 'react'
 import UserPage from '../pages/user'
 import UserProvider from '../context/userProvider'
+import ModeProvider from '../context/modeProvider'
 
 export default function AppRouter() {
   return (
@@ -46,7 +47,9 @@ export default function AppRouter() {
             path={'/user'}
             element={
               <PrivateRouter>
-                <UserPage />
+                <ModeProvider>
+                  <UserPage />
+                </ModeProvider>
               </PrivateRouter>
             }
           />
@@ -54,7 +57,9 @@ export default function AppRouter() {
             path={'/profile'}
             element={
               <PrivateRouter>
-                <ProfilePage />
+                <ModeProvider>
+                  <ProfilePage />
+                </ModeProvider>
               </PrivateRouter>
             }
           />
