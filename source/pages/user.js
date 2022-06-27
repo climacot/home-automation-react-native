@@ -3,7 +3,7 @@ import React from 'react'
 import Container from '../components/layouts/container'
 import HeaderUserInfo from '../components/layouts/headerInfoUser'
 import Nav from '../components/navs/nav'
-import SmallCard from '../components/links/smallCard'
+import SmallCard from '../components/buttons/smallCard'
 import Card from '../components/buttons/card'
 
 export default function UserPage() {

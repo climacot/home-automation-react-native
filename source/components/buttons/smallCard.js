@@ -1,5 +1,5 @@
 import React from 'react'
-import ButtonWithoutBackground from '../buttons/buttonWithoutBackground'
+import ButtonWithoutBackground from './buttonWithoutBackground'
 
 export default function SmallCard({ children, ...restProps }) {
   return (
