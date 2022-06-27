@@ -4,6 +4,7 @@ import Link from './link'
 export default function Card({ children, ...restProps }) {
   return (
     <Link
+      underlayColor={'#F8F8F8'}
       style={{
         alignItems: 'center',
         backgroundColor: '#FFFFFF',

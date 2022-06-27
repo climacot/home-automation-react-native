@@ -34,16 +34,20 @@ export default function ManualMode() {
       <Text style={{ textAlign: 'center', marginVertical: 10, color: '#000000' }}>Encender o apagar luces</Text>
       <View style={{ display: 'flex', flexDirection: 'row', padding: 10 }}>
         <SmallCard>
-          <Image style={{ width: 35, height: 35 }} source={require('../../assets/bed.png')} />
+          <Image style={{ width: 35, height: 35, marginBottom: 10 }} source={require('../../assets/bed.png')} />
+          <Text>Habit..</Text>
         </SmallCard>
         <SmallCard>
-          <Image style={{ width: 35, height: 35 }} source={require('../../assets/toilet.png')} />
+          <Image style={{ width: 35, height: 35, marginBottom: 10 }} source={require('../../assets/toilet.png')} />
+          <Text>Baño</Text>
         </SmallCard>
         <SmallCard>
-          <Image style={{ width: 35, height: 35 }} source={require('../../assets/gas.png')} />
+          <Image style={{ width: 35, height: 35, marginBottom: 10 }} source={require('../../assets/gas.png')} />
+          <Text>Cocina</Text>
         </SmallCard>
         <SmallCard>
-          <Image style={{ width: 35, height: 35 }} source={require('../../assets/living-room.png')} />
+          <Image style={{ width: 35, height: 35, marginBottom: 10 }} source={require('../../assets/living-room.png')} />
+          <Text>Sala</Text>
         </SmallCard>
       </View>
     </View>
