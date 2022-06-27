@@ -7,7 +7,7 @@ export default function Nav() {
   const { pathname } = useLocation()
   const { user } = useUser()
 
-  const home = user.cargo === 'administrador' ? '/admin' : '/user'
+  const home = user.rol === 'administrador' ? '/admin' : '/user'
 
   return (
     <View

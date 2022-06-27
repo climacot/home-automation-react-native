@@ -6,10 +6,10 @@ export const getDataUser = async uid => {
     const { cargo, nombre, foto, identificacion } = db.val()
 
     return {
-      cargo,
-      nombre,
-      foto,
-      identificacion
+      rol: cargo,
+      name: nombre,
+      photo: foto,
+      id: identificacion
     }
   } catch (error) {
     console.log(error)
