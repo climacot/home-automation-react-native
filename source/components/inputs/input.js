@@ -11,7 +11,8 @@ export default function Input({ ...restProps }) {
         fontSize: 15,
         marginVertical: 10,
         padding: 15,
-        backgroundColor: '#FFFFFF'
+        backgroundColor: '#FFFFFF',
+        elevation: 1
       }}
     />
   )

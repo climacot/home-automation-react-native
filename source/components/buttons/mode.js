@@ -3,9 +3,7 @@ import React from 'react'
 import useMode from '../../hooks/useMode'
 
 export default function ModeButton() {
-  const { mode, load, changeMode } = useMode()
-
-  if (!load) return null
+  const { mode, changeMode } = useMode()
 
   return (
     <View style={{ alignItems: 'center', justifyContent: 'center', width: 80 }}>

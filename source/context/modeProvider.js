@@ -24,5 +24,9 @@ export default function ModeProvider({ children }) {
     setMode(!mode)
   }
 
-  return <ModeContext.Provider value={{ mode, load, changeMode }}>{children}</ModeContext.Provider>
+  const stringMode = mode ? 'manual' : 'automatic'
+
+  if (!load) return null
+
+  return <ModeContext.Provider value={{ mode, load, stringMode, changeMode }}>{children}</ModeContext.Provider>
 }

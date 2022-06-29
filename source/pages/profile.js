@@ -8,7 +8,6 @@ import useUser from '../hooks/useUser'
 export default function ProfilePage() {
   const { singout, user } = useUser()
   const photo = user.photo && user.photo.length !== 0 ? { uri: user.photo } : require('../public/logo.png')
-  console.log(photo)
 
   return (
     <Container>

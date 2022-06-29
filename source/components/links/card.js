@@ -14,7 +14,8 @@ export default function Card({ children, ...restProps }) {
         margin: 10,
         padding: 12,
         flexGrow: 1,
-        minWidth: 120
+        minWidth: 120,
+        elevation: 1
       }}
       {...restProps}>
       <>{children}</>

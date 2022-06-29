@@ -8,6 +8,7 @@ import Card from '../components/buttons/card'
 import ModeButton from '../components/buttons/mode'
 import useMode from '../hooks/useMode'
 import ManualMode from '../components/layouts/manualMode'
+import AutomaticMode from '../components/layouts/automaticMode'
 
 export default function UserPage() {
   const { mode } = useMode()
@@ -15,7 +16,7 @@ export default function UserPage() {
   return (
     <Container>
       <HeaderUserInfo />
-      {mode ? <ManualMode /> : null}
+      {mode ? <ManualMode /> : <AutomaticMode />}
       <Nav />
     </Container>
   )
