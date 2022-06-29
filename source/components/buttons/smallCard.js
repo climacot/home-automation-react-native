@@ -4,6 +4,7 @@ import ButtonWithoutBackground from './buttonWithoutBackground'
 export default function SmallCard({ children, ...restProps }) {
   return (
     <ButtonWithoutBackground
+      underlayColor={'#0F9D58'}
       style={{
         alignItems: 'center',
         backgroundColor: '#FFFFFF',
@@ -12,7 +13,8 @@ export default function SmallCard({ children, ...restProps }) {
         justifyContent: 'center',
         margin: 5,
         flexGrow: 1,
-        paddingVertical: 10
+        paddingVertical: 10,
+        elevation: 1
       }}
       {...restProps}>
       <>{children}</>

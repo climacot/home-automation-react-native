@@ -35,15 +35,15 @@ export default function UserProvider({ children }) {
     }
 
     const { uid, email } = user
-    const { cargo, nombre, foto, identificacion } = await getDataUser(uid)
+    const { rol, name, photo, id } = await getDataUser(uid)
 
     setUser({
       email,
       uid,
-      cargo,
-      nombre,
-      foto,
-      identificacion
+      rol,
+      name,
+      photo,
+      id
     })
 
     if (initializing) setInitializing(false)

@@ -4,6 +4,7 @@ import Link from './link'
 export default function Card({ children, ...restProps }) {
   return (
     <Link
+      underlayColor={'#F8F8F8'}
       style={{
         alignItems: 'center',
         backgroundColor: '#FFFFFF',
@@ -13,7 +14,8 @@ export default function Card({ children, ...restProps }) {
         margin: 10,
         padding: 12,
         flexGrow: 1,
-        minWidth: 120
+        minWidth: 120,
+        elevation: 1
       }}
       {...restProps}>
       <>{children}</>

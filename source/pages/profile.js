@@ -6,18 +6,23 @@ import React from 'react'
 import useUser from '../hooks/useUser'
 
 export default function ProfilePage() {
-  const { singout } = useUser()
+  const { singout, user } = useUser()
+  const photo = user.photo && user.photo.length !== 0 ? { uri: user.photo } : require('../public/logo.png')
 
   return (
     <Container>
       <View style={{ display: 'flex', alignItems: 'center', marginTop: 100 }}>
-        <Image style={{ width: 200, height: 200 }} source={require('../public/logo.png')} />
+        <Image
+          loadingIndicatorSource={require('../public/logo.png')}
+          style={{ width: 200, height: 200, borderRadius: 9999 }}
+          source={photo}
+        />
       </View>
       <View style={{ paddingHorizontal: 10 }}>
-        <Text>Nombre: Climaco Fernando Rodriguez Tovar</Text>
-        <Text>Identificación: 1083931167</Text>
-        <Text>Cargo: Administrador</Text>
-        <Text>Correo: fermt111@gmail.com</Text>
+        <Text>Nombre: {user.name}</Text>
+        <Text>Identificación: {user.id}</Text>
+        <Text>Cargo: {user.rol}</Text>
+        <Text>Correo: {user.email}</Text>
       </View>
       <Button onPress={singout}>
         <Text style={{ textAlign: 'center', color: '#FFFFFF' }}>Cerrar sesión</Text>

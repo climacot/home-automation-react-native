@@ -12,7 +12,7 @@ export default function Container({ children }) {
         justifyContent: 'space-between',
         backgroundColor: '#EDF2F8',
         paddingHorizontal: 5,
-        paddingTop: 5
+        paddingVertical: 5
       }}>
       {children}
     </View>

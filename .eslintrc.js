@@ -15,6 +15,7 @@ module.exports = {
   rules: {
     'space-before-function-paren': 'off',
     'react/prop-types': 'off',
-    'no-unused-vars': 'off'
+    'no-unused-vars': 'off',
+    'dot-notation': 'off'
   }
 }

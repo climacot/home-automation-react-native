@@ -9,6 +9,7 @@ import React from 'react'
 import UserPage from '../pages/user'
 import UserProvider from '../context/userProvider'
 import ModeProvider from '../context/modeProvider'
+import SensorsProvider from '../context/sensorsProvider'
 
 export default function AppRouter() {
   return (
@@ -48,7 +49,9 @@ export default function AppRouter() {
             element={
               <PrivateRouter>
                 <ModeProvider>
-                  <UserPage />
+                  <SensorsProvider>
+                    <UserPage />
+                  </SensorsProvider>
                 </ModeProvider>
               </PrivateRouter>
             }
@@ -58,7 +61,9 @@ export default function AppRouter() {
             element={
               <PrivateRouter>
                 <ModeProvider>
-                  <ProfilePage />
+                  <SensorsProvider>
+                    <ProfilePage />
+                  </SensorsProvider>
                 </ModeProvider>
               </PrivateRouter>
             }
