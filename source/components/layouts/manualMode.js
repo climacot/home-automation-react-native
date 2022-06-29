@@ -4,11 +4,12 @@ import React from 'react'
 import SmallCard from '../buttons/smallCard'
 import useMode from '../../hooks/useMode'
 import useSensors from '../../hooks/useSensors'
+import Loader from '../loader/loader'
 
 export default function ManualMode() {
   const { load } = useSensors()
 
-  if (!load) return null
+  if (!load) return <Loader />
 
   return (
     <View>

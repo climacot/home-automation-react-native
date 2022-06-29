@@ -43,7 +43,7 @@ export default function LoginForm() {
 
   const Loader = (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Image style={{ width: 100, height: 100 }} source={require('../../assets/loader_without_background.gif')} />
+      <Image style={{ width: 50, height: 50 }} source={require('../../assets/loader_without_background.gif')} />
     </View>
   )
 
