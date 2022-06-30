@@ -1,4 +1,4 @@
-import { TouchableHighlight } from 'react-native'
+import { TouchableHighlight, View } from 'react-native'
 import React from 'react'
 
 export default function ButtonWithoutBackground({ children, ...restProps }) {

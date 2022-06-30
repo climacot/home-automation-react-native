@@ -16,8 +16,6 @@ export default function Card({ children, name, ...restProps }) {
       underlayColor={'#5CD073'}
       style={{
         backgroundColor: state ? '#5CD073' : '#FFFFFF',
-        borderWidth: 1.5,
-        borderColor: state ? '#50B063' : '#FFFFFF',
         alignItems: 'center',
         borderRadius: 10,
         display: 'flex',
@@ -26,7 +24,7 @@ export default function Card({ children, name, ...restProps }) {
         padding: 12,
         flexGrow: 1,
         minWidth: 120,
-        elevation: 1
+        elevation: 2
       }}
       {...restProps}>
       <>{children}</>

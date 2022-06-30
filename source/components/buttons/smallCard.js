@@ -16,8 +16,6 @@ export default function SmallCard({ children, name, ...restProps }) {
       underlayColor={'#5CD073'}
       style={{
         backgroundColor: state ? '#5CD073' : '#FFFFFF',
-        borderWidth: 1.5,
-        borderColor: state ? '#50B063' : '#FFFFFF',
         alignItems: 'center',
         borderRadius: 10,
         display: 'flex',
@@ -25,7 +23,7 @@ export default function SmallCard({ children, name, ...restProps }) {
         margin: 5,
         flexGrow: 1,
         paddingVertical: 10,
-        elevation: 1
+        elevation: 2
       }}
       {...restProps}>
       <>{children}</>
