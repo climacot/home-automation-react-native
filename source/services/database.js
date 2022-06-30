@@ -84,14 +84,13 @@ export const updateSensors = async (uid, data) => {
         manual: {
           alarma: data.manual.alarm,
           cocina: data.manual.kitchen,
-          habitacion: data.manual.room,
-          sala: data.manual.livingRoom,
+          habitacion: data.manual.livingRoom,
+          sala: data.manual.room,
           puerta: data.manual.door,
           ventilador: data.manual.fan,
           bano: data.manual.bath
         }
       })
-    console.log('data updated', db)
     return
   } catch (error) {
     console.log(error)

@@ -13,9 +13,9 @@ export default function Card({ children, name, ...restProps }) {
   return (
     <ButtonWithoutBackground
       onPress={handleClick}
-      underlayColor={'#0F9D58'}
+      underlayColor={'#5CD073'}
       style={{
-        backgroundColor: state ? '#0F9D58' : '#FFFFFF',
+        backgroundColor: state ? '#5CD073' : '#FFFFFF',
         alignItems: 'center',
         borderRadius: 10,
         display: 'flex',
@@ -24,7 +24,7 @@ export default function Card({ children, name, ...restProps }) {
         padding: 12,
         flexGrow: 1,
         minWidth: 120,
-        elevation: 1
+        elevation: 2
       }}
       {...restProps}>
       <>{children}</>

@@ -6,7 +6,7 @@ export default function LoaderPage() {
     <View
       style={{ display: 'flex', flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFFFFF' }}>
       <Text>App domotica</Text>
-      <Image source={require('../assets/loader.gif')} />
+      <Image style={{ height: 50, width: 50 }} source={require('../assets/loader.gif')} />
       <Text>Cargando. . .</Text>
     </View>
   )
