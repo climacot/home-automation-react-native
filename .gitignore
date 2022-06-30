@@ -63,7 +63,6 @@ buck-out/
 /vendor/bundle/
 
 # key
-
 classroom.json
-
 android/app/google-services.json
+.vscode
