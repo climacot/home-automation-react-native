@@ -65,3 +65,5 @@ buck-out/
 # key
 
 classroom.json
+
+android/app/google-services.json
