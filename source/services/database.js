@@ -20,7 +20,7 @@ export const getDataUser = async uid => {
 export const getDataSensors = async uid => {
   try {
     const db = await database().ref(`usuarios/${uid}/modo`).once('value')
-    const { manual } = db.val()
+    const { manual, automatico } = db.val()
     const { alarma, puerta, ventilador, bano, cocina, habitacion, sala } = manual
 
     return {
@@ -34,7 +34,13 @@ export const getDataSensors = async uid => {
         room: sala
       },
       automatic: {
-        alarm: alarma
+        alarm: automatico.alarma,
+        door: automatico.puerta,
+        fan: automatico.ventilador,
+        bath: automatico.bano,
+        kitchen: automatico.cocina,
+        livingRoom: automatico.habitacion,
+        room: automatico.sala
       }
     }
   } catch (error) {
@@ -61,7 +67,13 @@ export const getDataOnStateChange = (uid, onStateChange, onSucess) => {
           room: sala
         },
         automatic: {
-          alarm: automatico.alarma
+          alarm: automatico.alarma,
+          door: automatico.puerta,
+          fan: automatico.ventilador,
+          bath: automatico.bano,
+          kitchen: automatico.cocina,
+          livingRoom: automatico.habitacion,
+          room: automatico.sala
         }
       })
 
@@ -78,9 +90,6 @@ export const updateSensors = async (uid, data) => {
     const db = await database()
       .ref(`usuarios/${uid}/modo`)
       .update({
-        automatico: {
-          alarma: data.automatic.alarm
-        },
         manual: {
           alarma: data.manual.alarm,
           cocina: data.manual.kitchen,
@@ -89,6 +98,15 @@ export const updateSensors = async (uid, data) => {
           puerta: data.manual.door,
           ventilador: data.manual.fan,
           bano: data.manual.bath
+        },
+        automatico: {
+          alarma: data.automatic.alarm,
+          cocina: data.automatic.kitchen,
+          habitacion: data.automatic.livingRoom,
+          sala: data.automatic.room,
+          puerta: data.automatic.door,
+          ventilador: data.automatic.fan,
+          bano: data.automatic.bath
         }
       })
     return
