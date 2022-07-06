@@ -35,7 +35,7 @@ export default function UserProvider({ children }) {
     }
 
     const { uid, email } = user
-    const { rol, name, photo, id } = await getDataUser(uid)
+    const { rol, name, photo, id, mode } = await getDataUser(uid)
 
     setUser({
       email,
@@ -43,7 +43,8 @@ export default function UserProvider({ children }) {
       rol,
       name,
       photo,
-      id
+      id,
+      mode
     })
 
     if (initializing) setInitializing(false)

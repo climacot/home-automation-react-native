@@ -50,7 +50,17 @@ export default function SensorsProvider({ children }) {
     updateSensors(user.uid, copy)
   }
 
+  const changeTemp = temp => {
+    const copy = JSON.parse(JSON.stringify(sensors))
+    copy['automatic']['fan']['limit'] = temp
+
+    setSensors(copy)
+    updateSensors(user.uid, copy)
+  }
+
   // if (!load) return null
 
-  return <SensorsContext.Provider value={{ sensors, load, changeState }}>{children}</SensorsContext.Provider>
+  return (
+    <SensorsContext.Provider value={{ sensors, load, changeState, changeTemp }}>{children}</SensorsContext.Provider>
+  )
 }

@@ -3,13 +3,14 @@ import database from '@react-native-firebase/database'
 export const getDataUser = async uid => {
   try {
     const db = await database().ref(`usuarios/${uid}`).once('value')
-    const { cargo, nombre, foto, identificacion } = db.val()
+    const { cargo, nombre, foto, identificacion, modoActual } = db.val()
 
     return {
       rol: cargo,
       name: nombre,
       photo: foto,
-      id: identificacion
+      id: identificacion,
+      mode: modoActual
     }
   } catch (error) {
     console.log(error)
@@ -36,7 +37,10 @@ export const getDataSensors = async uid => {
       automatic: {
         alarm: automatico.alarma,
         door: automatico.puerta,
-        fan: automatico.ventilador,
+        fan: {
+          limit: automatico.ventilador.limite,
+          temp: automatico.ventilador.temp
+        },
         bath: automatico.bano,
         kitchen: automatico.cocina,
         livingRoom: automatico.habitacion,
@@ -69,7 +73,10 @@ export const getDataOnStateChange = (uid, onStateChange, onSucess) => {
         automatic: {
           alarm: automatico.alarma,
           door: automatico.puerta,
-          fan: automatico.ventilador,
+          fan: {
+            limit: automatico.ventilador.limite,
+            temp: automatico.ventilador.temp
+          },
           bath: automatico.bano,
           kitchen: automatico.cocina,
           livingRoom: automatico.habitacion,
@@ -105,10 +112,24 @@ export const updateSensors = async (uid, data) => {
           habitacion: data.automatic.livingRoom,
           sala: data.automatic.room,
           puerta: data.automatic.door,
-          ventilador: data.automatic.fan,
+          ventilador: {
+            limite: data.automatic.fan.limit
+          },
           bano: data.automatic.bath
         }
       })
+    return
+  } catch (error) {
+    console.log(error)
+    return null
+  }
+}
+
+export const updateMode = async (uid, data) => {
+  try {
+    const db = await database().ref(`usuarios/${uid}`).update({
+      modoActual: data
+    })
     return
   } catch (error) {
     console.log(error)
