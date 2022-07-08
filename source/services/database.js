@@ -113,7 +113,8 @@ export const updateSensors = async (uid, data) => {
           sala: data.automatic.room,
           puerta: data.automatic.door,
           ventilador: {
-            limite: data.automatic.fan.limit
+            limite: data.automatic.fan.limit,
+            temp: data.automatic.fan.temp
           },
           bano: data.automatic.bath
         }

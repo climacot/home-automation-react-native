@@ -41,20 +41,16 @@ export default function AutomaticMode() {
       </Text>
       <View style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row', padding: 10 }}>
         <SetTempForm />
-        <Card name={'fan'} disable>
-          <Image style={{ width: 30, height: 30, marginBottom: 10 }} source={require('../../assets/ventilador.png')} />
-          <Text>Ventilador</Text>
-        </Card>
       </View>
-      <Text style={{ textAlign: 'center', marginVertical: 10, color: '#000000' }}>
+      {/* <Text style={{ textAlign: 'center', marginVertical: 10, color: '#000000' }}>
         Rango de hora para encendido de la alarma
-      </Text>
-      <View style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row', padding: 10 }}>
+      </Text> */}
+      {/* <View style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row', padding: 10 }}>
         <Card name={'alarm'} disable>
           <Image style={{ width: 30, height: 30, marginBottom: 10 }} source={require('../../assets/turn.png')} />
           <Text>Alarma</Text>
         </Card>
-      </View>
+      </View> */}
     </View>
   )
 }
